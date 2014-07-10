@@ -1,0 +1,16 @@
+{# src/Qd/BlogBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>Le Blog 14-18</h1>
+    {%  block qdblog_body %} {% endblock %}
+{% endblock %}

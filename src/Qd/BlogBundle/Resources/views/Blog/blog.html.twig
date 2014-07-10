@@ -1,0 +1,25 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/blog.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+    {{ render(controller("QdBlogBundle:Blog:date")) }}
+{%  endblock %}
+
+{% block body %}
+        {{ render(controller("QdBlogBundle:Blog:journaux")) }}
+        {{ render(controller("QdBlogBundle:Blog:data")) }}
+{% endblock %}
+
+{% block side %}
+    {{ render(controller("QdBlogBundle:Blog:chrono")) }}
+{% endblock %}
+
+
+
+
+

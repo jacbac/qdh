@@ -1,0 +1,39 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/donnees.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    L'OpenData - {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+    <div id="content-header">
+        <div class="date">
+            <h1>Les donnees libres</h1>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block body %}
+    {%  if photos is defined and photos is not null and photos|length>0 %}
+        <div class="row chronos">
+            <div class="title"><h4>Les photosgraphies de l'OpenData</h4></div>
+                <table class="table-responsive table-bordered table-striped">
+                    {% for photo in photos %}
+                            <tr>
+                                <td class="chronodate"> {{ photo.datepv|localizeddate('medium', 'none') }} </td>
+                                <td> {{ photo.pays }}</td>
+                                <td> {{ photo.region }}</td>
+                                <td> {{ photo.edif }}</td>
+                                <td> {{ photo.leg }}</td>
+                                <td> {{ photo.obj }}</td>
+                                <td> {{ photo.lieucor }}</td>
+                                <td> {{ photo.autp }}</td>
+                                <td> {{ photo.serie }}</td>
+
+                            </tr>
+                    {% endfor %}
+                </table>
+        </div>
+    {% endif %}
+{% endblock %}

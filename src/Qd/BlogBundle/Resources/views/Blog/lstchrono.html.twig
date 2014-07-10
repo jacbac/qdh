@@ -1,0 +1,102 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/lstchrono.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Chronos
+{%  endblock %}
+
+{% block header %}
+    <h2>Listes Chronologiques</h2>
+{%  endblock %}
+
+{% block body %}
+<div class="contenu">
+    {%  if chronos is defined and chronos is not null and chronos|length>0 %}
+    <div class="row chronos">
+        <div class="title"><h2>Chronologies</h2></div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div id="taggeneral" class="hidden-xs panel-collapse collapse in">
+                    <div  class="panel-body">
+                        <table class="table-responsive table-bordered table-striped">
+                            {% for chrono in chronos %}
+                            {% if chrono.datedebut|date('Y') > '1913' %}
+                                    <tr>
+                                        <td class="chronodate"> {{ chrono.datedebut|localizeddate('medium', 'none') }} </td>
+                                        <td> {{ chrono.tags.nom }}</td>
+                                        <td> {{ chrono.description }}</td>
+                                        {% if chrono.table is not null %}
+                                            <td>
+                                                {% if chrono.table == 'soldat' %}
+                                                    <a href="{{ path('qd_blog_soldat', {'id': chrono.idtable}) }}">détails</a>
+                                                {% elseif chrono.table == 'bataille' %}
+                                                    <a href="{{ path('qd_blog_bataille', {'id': chrono.idtable}) }}">détails</a>
+                                                {% endif %}
+                                            </td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+
+                                    </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+
+
+                {% for tag in tags %}
+
+                    <div class="visible-xs panel-heading">
+                        <a href="#tag{{ tag.id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ tag.nom }}</a>
+                    </div>
+                    <div id="tag{{ tag.id }}" class="panel-collapse collapse">
+                        <div  class="panel-body table-responsive ">
+                            <table class="table-bordered table-striped .table-condensed">
+                                {% for chrono in chronos %}
+                                    {% if chrono.tags.id == tag.id %}
+                                        {% if chrono.datedebut|date('Y') > '1913' %}
+                                        <tr>
+                                            <td class="chronodate">{{ chrono.datedebut|localizeddate('medium', 'none') }} </td>
+                                            <td> {{ chrono.description }}</td>
+
+                                            {% if chrono.table is not null %}
+                                                <td>
+                                                {% if chrono.table == 'soldat' %}
+                                                    <a href="{{ path('qd_blog_soldat', {'id': chrono.idtable}) }}">détails</a>
+                                                {% elseif chrono.table == 'bataille' %}
+                                                    <a href="{{ path('qd_blog_bataille', {'id': chrono.idtable}) }}">détails</a>
+                                                {% endif %}
+                                                </td>
+                                                {% else %}
+                                                <td></td>
+                                            {% endif %}
+
+                                        </tr>
+                                    {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block side %}
+<div class="contenu fixed">
+    <div class="hidden-xs panel-heading">
+        <a href="#taggeneral" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Chronologie Générale</a>
+    </div>
+    {% for tag in tags %}
+        <div class="hidden-xs panel-heading">
+            <a href="#tag{{ tag.id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ tag.nom }}</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

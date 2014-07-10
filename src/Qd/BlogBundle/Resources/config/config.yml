@@ -1,0 +1,4 @@
+# src/Qd/BlogBundle/Resources/config/config.yml
+parameters:
+    # Blogger contact email address
+    qd_blog.emails.contact_email: jpetiteau@gmail.com

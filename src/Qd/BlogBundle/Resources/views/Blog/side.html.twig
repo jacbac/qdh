@@ -1,0 +1,22 @@
+
+    {%  if chrono is defined and chrono is not null and chrono|length>0 %}
+    <div class="chrono">
+        <div class="title">
+            <h4>Chronologies</h4>
+        </div>
+        <!--<hr>-->
+        {% for c in chrono %}
+            <div class="content">
+                <div class="tags"> <i><a href="#" >{{ c.tags.nom }}</a></i></div>
+                    {# c.datedebut|date('Y-m-d') #}
+                    <p>{{ c.description }}</p>
+                <span>source</span>
+                <div class="source">
+                    <p>{{ c.source.auteur }}</p>
+                    <a href="{{ c.source.url }}" target="_blank">{{ c.source.titre }}</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+        </div>
+    {% endif %}

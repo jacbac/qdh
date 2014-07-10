@@ -1,0 +1,55 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/chrono.html.twig #}
+
+<div class="contenu">
+<div class="chrono">
+    <h2>Evénements</h2>
+
+{%  if chronos is defined and chronos is not null and chronos|length>0 %}
+        {% for chrono in chronos %}
+            <div>
+                <div class="tags"> <i><a href="#" >{{ chrono.tags.nom }}</a></i></div>
+                {# c.datedebut|date('d M y') #}
+                <p>{{  chrono.description }}</p>
+                {% if chrono.table is not null %}
+                    {% if chrono.table == 'soldat' %}
+                    <a href="{{ path('qd_blog_soldat', {'id': chrono.idtable}) }}">détails</a>
+                    {% elseif chrono.table == 'bataille' %}
+                    <a href="{{ path('qd_blog_bataille', {'id': chrono.idtable}) }}">détails</a>
+                    {% endif %}
+                {% endif %}
+                <!--<span>source</span>
+                <div class="source">
+                    <p>{# chrono.source.auteur #} /
+                    <a href="{# chrono.source.url #}" target="_blank">{# chrono.source.titre #}</a></p>
+                </div>-->
+            </div>
+        {% endfor %}
+{% endif %}
+        {%  if evenements is defined and evenements is not null and evenements|length>0 %}
+        <!--<div class="title">
+            <h4>Evènements en cours</h4>
+        </div>-->
+        {% for event in evenements %}
+            {% if event.datefin != '0000-00-00' and event.datefin != '00:00:00' %}
+            <div>
+                <div class="tags"> <i><a href="#" >{{ event.tags.nom }}</a></i></div>
+                <p> Du  {{ event.datedebut|localizeddate('medium', 'none') }} au  {{ event.datefin|localizeddate('medium', 'none') }} </p>
+                <p>{{ event.description }}</p>
+                {% if event.table is not null %}
+                    {% if event.table == 'soldat' %}
+                        <a href="{{ path('qd_blog_soldat', {'id': event.idtable}) }}">détails</a>
+                    {% elseif event.table == 'bataille' %}
+                        <a href="{{ path('qd_blog_bataille', {'id': event.idtable}) }}">détails</a>
+                    {% endif %}
+                {% endif %}
+                <!--<span>source</span>
+                <div class="source">
+                    <p>{# event.source.auteur #} /
+                    <a href="{# event.source.url #}" target="_blank">{# event.source.titre #}</a></p>
+                </div>-->
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+</div>
+</div>

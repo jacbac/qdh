@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Opendata" table="opendata">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ref" type="string" column="ref" length="255" nullable="true"/>
+    <field name="nump" type="string" column="nump" length="255" nullable="true"/>
+    <field name="pays" type="string" column="pays" length="255" nullable="true"/>
+    <field name="reg" type="string" column="reg" length="255" nullable="true"/>
+    <field name="dpt" type="string" column="dpt" length="255" nullable="true"/>
+    <field name="com" type="string" column="com" length="255" nullable="true"/>
+    <field name="insee" type="string" column="insee" length="255" nullable="true"/>
+    <field name="edif" type="string" column="edif" length="255" nullable="true"/>
+    <field name="adresse" type="text" column="adresse" nullable="true"/>
+    <field name="leg" type="text" column="leg" nullable="true"/>
+    <field name="obj" type="text" column="obj" nullable="true"/>
+    <field name="lieucor" type="text" column="lieucor" nullable="true"/>
+    <field name="autp" type="text" column="autp" nullable="true"/>
+    <field name="autoeu" type="text" column="autoeu" nullable="true"/>
+    <field name="scle" type="text" column="scle" nullable="true"/>
+    <field name="datepv" type="text" column="datepv" nullable="true"/>
+    <field name="serie" type="text" column="serie" nullable="true"/>
+    <field name="typdoc" type="text" column="typdoc" nullable="true"/>
+    <field name="lbase" type="text" column="lbase" nullable="true"/>
+    <field name="copy" type="text" column="copy" nullable="true"/>
+    <field name="videov" type="string" column="videov" length="255" nullable="true"/>
+    <field name="videop" type="string" column="videop" length="255" nullable="true"/>
+    <field name="dateqd" type="date" column="dateQd" nullable="true"/>
+    <field name="createdOn" type="datetime" column="created_on" nullable="false"/>
+    <field name="changedOn" type="datetime" column="changed_on" nullable="false"/>
+  </entity>
+</doctrine-mapping>

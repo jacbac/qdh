@@ -1,0 +1,53 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/soldat.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+    {%  if soldat is defined and soldat is not null and soldat|length>0 %}
+        {% for s in soldat %}
+    <h2>{{  s.prenom }} {{  s.nom }}</h2>
+        {% endfor %}
+    {% endif %}
+{%  endblock %}
+
+{% block body %}
+    {%  if soldat is defined and soldat is not null and soldat|length>0 %}
+        {% for s in soldat %}
+            <h5>{{  s.prenom }} {{  s.nom }}, né le
+                {% if datenais is null %}{{  s.datenais|localizeddate('full', 'none') }}{% else %}{{ datenais }}{% endif %}
+                {% if s.datedec != '0000-00-00' %}, décédé le {{  s.datedec|localizeddate('full', 'none') }}.{% endif %} </h5>
+            <p>{{ s.pres }}</p>
+            <i>Source : <a href="{{ s.source.url }}">{{ s.source.auteur }}</a> </i>
+
+            {% if s.carnet is not null %}
+                <p><a href="#">Voir le journal de {{  s.prenom }} {{  s.nom }}</a></p>
+            {% endif %}
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+{% block side %}
+    {%  if soldat is defined and soldat is not null and soldat|length>0 %}
+    <div id="gallerie" class="panel-collapse collapse in">
+        <div  class="panel-body">
+            <div class="container-fluid">
+                <div class="row popup-gallery ">
+                    {% for s in soldat %}
+                        {% if s.photo is not null %}
+                            <a href="{{ asset('bundles/qdblog/images/photos/'~s.photo.path) }}"
+                               title="{{  s.photo.nom }}" author="{{ s.photo.source.auteur }}" source="{{ s.photo.source.url }}">
+                                <img class="thumbnail img-responsive "  src="{{ asset('bundles/qdblog/images/photos/'~s.photo.path) }}" /></a>
+                            <i>{{  s.photo.nom }}</i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{%  endblock %}

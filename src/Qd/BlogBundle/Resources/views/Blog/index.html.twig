@@ -1,0 +1,42 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/index.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+        <h2>Un jour, pendant la première guerre mondiale</h2>
+{%  endblock %}
+
+{% block body %}
+    <div class="contenu">
+        <h2>Bienvenue sur ce site</h2>
+        <p>
+            Le site "Un jour en 14" est en ligne depuis peu. <br />L'idée de ce site est de présenter le conflit par une vision quotidienne des événements.<br />
+            Vous pourrez naviguez à travers les dates majeures ou mineures de cette guerre.
+            Outre l'actualité quotidienne composée d'un extrait de la Presse de l'époque, de la liste des faits ayant eu lieu ce jour,
+            le site offre une approche chronologique du conflit par zone géographique (front de l'Ouest, de l'Est, etc.) ou par thématique (Aviation, Marine, etc.).<br />
+            De plus, et cela grâce à l'aide du dispositif OpenData mis en place par le Ministère de la Culture et de la Communication,
+            il vous sera possible de consulter les 18 982 photos issues de la plateforme <a href="http://www.data.gouv.fr" target="_blank">data.gouv.fr</a>.
+            <br />
+            Ce site n'est pas encore terminé, mais il était important de le mettre rapidement en ligne.
+            La page d'actualité quotidienne sera étoffée par un extrait de carnet de soldats et de photos diverses.<br />
+            Enfin, l'actualité quotidienne concerne actuellement l'année 1914, les informations concernants les années 195, 1916, 1917 et 1918 seront mis en ligne dans les prochains mois.
+        </p>
+        <p>Aujourd'hui, nous sommes le {{ "now"|localizeddate('full', 'none') }}, le conflit ne commençant que début août, vous accéderez donc au <b>{{ date|localizeddate('full', 'none') }}</b>
+        <a href="{{ path('qd_blog_blog') }}">Entrez</a></p>
+    </div>
+{% endblock %}
+
+{% block side %}
+    <div class="contenu">
+        <p>
+            Dans ce site, vous aurez accès à une chronologie de 400 événements, classés par thème<br />
+            la possibilité de visionner pres de 18 000 photos<br/>
+            de consulter les différentes Unes de la presse durant les 1564 jours de conflits !!<br />
+            Bonne lecture !
+        </p>
+    </div>
+{% endblock %}

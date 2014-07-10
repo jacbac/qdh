@@ -1,0 +1,52 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/contact.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Contact
+{%  endblock %}
+
+{% block header %}
+    <h2>Contacter l'équipe de "UnJourEn14"</h2>
+{%  endblock %}
+
+{% block content %}
+
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <p>Les données que vous saisirrez dans le formulaire ci dessous ne seront en aucun cas stkées dans la base de données.</p>
+    <p>Remplissez simplement le formulaire ci-dessous !</p>
+
+    <form action="{{ path('qd_blog_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.name, "Nom") }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div>
+            {{ form_label(form.email, "Email") }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div>
+            {{ form_label(form.subject, "Sujet") }}
+            {{ form_errors(form.subject) }}
+            {{ form_widget(form.subject) }}
+        </div>
+        <div>
+            {{ form_label(form.body, "Message") }}
+            {{ form_errors(form.body) }}
+            {{ form_widget(form.body) }}
+        </div>
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Envoyez !" />
+    </form>
+
+{% endblock %}

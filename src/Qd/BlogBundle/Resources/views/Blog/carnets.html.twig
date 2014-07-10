@@ -1,0 +1,26 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/carnet.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    Les carnets - {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+    <div id="content-header">
+        <div class="date">
+            <h1>Les carnets</h1>
+        </div>
+        <div class="frontimg">
+            <img src="../img/aout14.png" title="image ou photo aout 1914"/>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block body %}
+    <h2>Page des carnets du Blog 14-18</h2>
+    {%  block qdblog_body %}
+        <h4>Ici il y aura la liste des carnets dont les passages sont publiés sur le site</h4>
+        <p>--------------------</p>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,33 @@
+qd_blog_homepage:
+    path:  /
+    defaults: { _controller: QdBlogBundle:Blog:index }
+
+qd_blog_lstchrono:
+    path:  /Chronologies
+    defaults: { _controller: QdBlogBundle:Blog:lstchrono }
+
+qd_blog_blog:
+    path:  /CeJour/{action}
+    defaults: { _controller: QdBlogBundle:Blog:blog, action: today }
+
+qd_blog_photos:
+    path:  /Photos/{cat}/{req}
+    defaults: { _controller: QdBlogBundle:Blog:photos, cat: null, req: null }
+
+qd_blog_soldat:
+    path:  /Soldat/{id}
+    defaults: { _controller: QdBlogBundle:Blog:soldat }
+
+qd_blog_bataille:
+    path:  /Bataille/{id}
+    defaults: { _controller: QdBlogBundle:Blog:bataille }
+
+qd_blog_mentions:
+    path:  /mentionsLégales
+    defaults: { _controller: QdBlogBundle:Blog:mentions }
+
+qd_blog_contact:
+    path:  /contact
+    defaults: { _controller: QdBlogBundle:Blog:contact }
+    requirements:
+        _method:  GET|POST

@@ -1,0 +1,49 @@
+{# src/Qd/BlogBundle/Resources/views/Blog/bataille.html.twig #}
+
+{% extends "QdBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{%  endblock %}
+
+{% block header %}
+    {%  if bataille is defined and bataille is not null and bataille|length>0 %}
+        {% for b in bataille %}
+            <h2>{{  b.titre }}</h2>
+        {% endfor %}
+    {% endif %}
+{%  endblock %}
+
+{% block body %}
+    {%  if bataille is defined and bataille is not null and bataille|length>0 %}
+        {% for b in bataille %}
+            <h5>{{  b.titre }}, du {{ b.datedeb|localizeddate('full', 'none') }} au {{  b.datefin|localizeddate('full', 'none') }} </h5>
+            <p>{{ b.pres }}</p>
+            <p>{{ b.descr }}</p>
+            <p>{{ b.bilan }}</p>
+            <i>Source : <a href="{{ b.source.url }}">{{ b.source.auteur }}</a> </i>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+{% block side %}
+    {%  if bataille is defined and bataille is not null and bataille|length>0 %}
+    <div id="gallerie" class="panel-collapse collapse in">
+        <div  class="panel-body">
+            <div class="container-fluid">
+                <div class="row popup-gallery ">
+                {% for b in bataille %}
+                    {% if b.photos is not null %}
+                        <a href="{{ asset('bundles/qdblog/images/photos/'~b.photos.path) }}"
+                           title="{{  b.photos.nom }}" author="{{ b.photos.source.auteur }}" source="{{ b.photos.source.url }}">
+                        <img class="thumbnail img-responsive "  src="{{ asset('bundles/qdblog/images/photos/'~b.photos.path) }}" /></a>
+                        <i>{{  b.photos.nom }}</i>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{%  endblock %}

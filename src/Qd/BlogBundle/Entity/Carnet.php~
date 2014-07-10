@@ -1,0 +1,53 @@
+<?php
+
+namespace Qd\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Carnet
+ *
+ * @ORM\Table(name="carnet")
+ * @ORM\Entity
+ */
+class Carnet
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="auteur", type="string", length=255, nullable=false)
+     */
+    private $auteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte", type="text", nullable=false)
+     */
+    private $texte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remerciement", type="text", nullable=false)
+     */
+    private $remerciement;
+
+
+}

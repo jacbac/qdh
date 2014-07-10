@@ -1,0 +1,4 @@
+qd_blog:
+    resource: "@QdBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
