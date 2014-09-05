@@ -8,30 +8,26 @@
 
 namespace Qd\BlogBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Qd\BlogBundle\Entity\Enquiry;
 use Qd\BlogBundle\Form\EnquiryType;
 
 class BlogController extends Controller
 {
-
     public function indexAction()
     {
-        if(!$date = $this->getRequest()->getSession()->get('date')){
+        if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
-        //if($date->format('Y-m-d') == '1914-08-01'){
+        //if ($date->format('Y-m-d') == '1914-08-01') {
         //    return $this->redirect( $this->generateUrl('qd_blog_blog'));
         //}
-
         return $this->render('QdBlogBundle:Blog:index.html.twig', array('date' => $date));
     }
 
-    private function donneDate(){
-
+    private function donneDate()
+    {
         // on prend la date du jour
         $today = new \DateTime('today');
         // on enlève 100 ans et on adapte le format
@@ -48,7 +44,9 @@ class BlogController extends Controller
 
         return $date;
     }
-    private function donneJournaux($madate){
+
+    private function donneJournaux($madate)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $repo = $em->getRepository('QdBlogBundle:Articles');
@@ -57,19 +55,18 @@ class BlogController extends Controller
         return $journaux;
 
     }
+
     private function donneChrono($madate)
     {
         $chronos =  $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Chrono')
             ->myFindByChrono($madate);
-        /*$em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('QdBlogBundle:Chrono');
-        $chronos = $repo->findByDatedebut($madate);*/
 
         return $chronos;
     }
-    private function donneEvenements($madate){
+    private function donneEvenements($madate)
+    {
         $evenements =  $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Chrono')
@@ -77,47 +74,52 @@ class BlogController extends Controller
 
         return $evenements;
     }
-    private function donnePhotos(){
-        $photos['pays'] =  $this->getDoctrine()
+
+    private function donnePhotos()
+    {
+        $photos['pays'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctPays();
-        $photos['region'] =  $this->getDoctrine()
+        $photos['region'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctRegion();
-        $photos['dpt'] =  $this->getDoctrine()
+        $photos['dpt'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctDpt();
-        $photos['com'] =  $this->getDoctrine()
+        $photos['com'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctCom();
-        //$photos['leg'] =  $this->getDoctrine()->getManager()->getRepository('QdBlogBundle:Opendata')->myDistinctLeg();
-        $photos['autp'] =  $this->getDoctrine()
+        $photos['autp'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctAutp();
-        $photos['autoeu'] =  $this->getDoctrine()
+        $photos['autoeu'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctAutoeu();
-        $photos['serie'] =  $this->getDoctrine()
+        $photos['serie'] = $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Opendata')
             ->myDistinctSerie();
 
         return $photos;
     }
-    private function donneDatas($madate){
+
+    private function donneDatas($madate)
+    {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('QdBlogBundle:Opendata');
         $datas = $repo->findBy(array('datepv' =>$madate),array('datepv' =>'desc'), 3, 0);
 
         return $datas;
     }
-    private function donneListeschronos(){
+
+    private function donneListeschronos()
+    {
         $listesChronos =  $this->getDoctrine()
             ->getManager()
             ->getRepository('QdBlogBundle:Chrono')
@@ -125,8 +127,8 @@ class BlogController extends Controller
 
         return $listesChronos;
     }
-    private function donneTags(){
-
+    private function donneTags()
+    {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('QdBlogBundle:Tags');
         $tags = $repo->findAll();
@@ -134,11 +136,11 @@ class BlogController extends Controller
         return $tags;
     }
 
-    private function verifDate($date){
-
-        if($date->format('Y-m-d') < '1914-08-01'){
+    private function verifDate($date)
+    {
+        if ($date->format('Y-m-d') < '1914-08-01') {
             $date = new \DateTime('1914-08-01');
-        }elseif($date->format('Y-m-d') > '1918-11-11'){
+        } elseif ($date->format('Y-m-d') > '1918-11-11') {
             $date = new \DateTime('1918-11-11');
         }
 
@@ -173,25 +175,24 @@ class BlogController extends Controller
     {
         $date = $this->getRequest()->getSession()->get('date');
         $datas = $this->donneDatas($this->getRequest()->getSession()->get('madate'));
-        //var_dump($datas);
 
         return $this->render('QdBlogBundle:Blog:data.html.twig', array('datas' => $datas, 'date' => $date));
     }
 
-    public function blogAction(){
-
+    public function blogAction()
+    {
         $session = $this->getRequest()->getSession();
-        if($session->get('date') == null){
+        if ($session->get('date') == null) {
             $date = $this->donneDate();
-        }else{
-            if($action = $this->getRequest()->get('action')){
+        } else {
+            if ($action = $this->getRequest()->get('action')) {
                 $date = $session->get('date');
-                if($action != 'today') {
+                if ($action != 'today') {
                     $tabdate = $this->container->getParameter('tabdate');
                     $modif = $tabdate[$action];
                     $date->modify($modif);
                 }
-            }else{
+            } else {
                 $date = $session->get('date');
             }
         }
@@ -203,12 +204,11 @@ class BlogController extends Controller
 
        return $this->render('QdBlogBundle:Blog:blog.html.twig');
 
-
     }
 
     public function menuAction()
     {
-        if(!$date = $this->getRequest()->getSession()->get('date')){
+        if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
         $date = $this->getRequest()->getSession()->get('date');
@@ -227,7 +227,7 @@ class BlogController extends Controller
 
     public function lstchronoAction()
     {
-        if(!$date = $this->getRequest()->getSession()->get('date')){
+        if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
         $listesChronos = $this->donneListeschronos();
@@ -236,73 +236,69 @@ class BlogController extends Controller
         return $this->render('QdBlogBundle:Blog:lstchrono.html.twig', array('chronos' => $listesChronos, 'tags' => $tags));
 
     }
+
     public function photosAction()
     {
-        if(!$date = $this->getRequest()->getSession()->get('date')){
+        if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
         $tabCatPhoto = $this->container->getParameter('tabCatPhoto');
         //var_dump($tabCatPhoto);
         $photos = $this->donnePhotos();
-        if($cate = $this->getRequest()->get('cat') AND $req = $this->getRequest()->get('req')){
+        if ($cate = $this->getRequest()->get('cat') AND $req = $this->getRequest()->get('req')) {
             //var_dump($cate); var_dump($req);
             $em = $this->getDoctrine()->getManager();
             $repo = $em->getRepository('QdBlogBundle:Opendata');
             $result =  $repo->myFindByReq($cate, $req);
-            //$cate = $tabCatPhoto[$cate];
-        }else{
+        } else {
             $cate = '';
             $req = '';
             $result = '';
-
         }
-        //
-        //$photos = $repo->findAll();
-        //var_dump($photos);
 
         return $this->render('QdBlogBundle:Blog:photos.html.twig', array(
             'tabCatPhoto' => $tabCatPhoto,
-            'photos' => $photos,
-            'cate' => $cate,
-            'req' => $req,
-            'result' => $result));
+            'photos'      => $photos,
+            'cate'        => $cate,
+            'req'         => $req,
+            'result'      => $result
+        ));
     }
 
     public function voirAction($id)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('QdBlogBundle:Carnet');
         $carnet = $repository->find($id);
+
         return $this->render('QdBlogBundle:Blog:voir.html.twig', array('carnet' => $carnet));
     }
 
-    public function soldatAction($id){
-
+    public function soldatAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('QdBlogBundle:Soldat');
         $soldat = $repo->findById($id);
         $datenais = $this->verifOldDate($soldat[0]->getDatenais());
 
-
         //$sd = $sd->format('Y-m-d');
         //var_dump($sd);
-
         return $this->render('QdBlogBundle:Blog:soldat.html.twig', array('soldat' => $soldat, 'datenais' => $datenais));
     }
 
-    public function batailleAction($id){
-
+    public function batailleAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('QdBlogBundle:Bataille');
         $bataille = $repo->findById($id);
         //$datenais = $this->verifOldDate($soldat[0]->getDatenais());
-
         return $this->render('QdBlogBundle:Blog:bataille.html.twig', array('bataille' => $bataille));
     }
 
-    private function verifOldDate($date){
+    private function verifOldDate($date)
+    {
         $sd = new \DateTime($date);
         $datenais = null;
-        if($sd->format("Y-m-d") <= ("1901-11-31")){
+        if ($sd->format("Y-m-d") <= ("1901-11-31")) {
             $tabMonth = array(
                 '01' => 'Janv',
                 '02' => 'Fév',
@@ -328,7 +324,6 @@ class BlogController extends Controller
     {
         $carnet = new Carnet();
 
-
         $carnet->setDate('29/09/1916');
         $carnet->setAuteur('soldat');
         $carnet->setTexte('Mercredi 29 septembre 1915
@@ -342,14 +337,17 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
         $em->persist($carnet);
         $em->flush();
 
-        if($this->getRequest()->getMethod() == 'POST'){
+        if ($this->getRequest()->getMethod() == 'POST') {
             $this->get('session')->getFlashBag()->add('carnet enregistré');
+
             return $this->redirect( $this->generateUrl('QdBlogBundle:Blog:voir.html.twig', array('id' => $carnet->getId())));
         }
+
         return $this->render('QdBlogBundle:Blog:ajouter.html.twig');
     }
 
-    public function mentionsAction(){
+    public function mentionsAction()
+    {
         return $this->render('QdBlogBundle:Blog:mentions.html.twig');
     }
 
@@ -365,7 +363,6 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
             $form->bind($request);
 
             if ($form->isValid()) {
-
 
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Message du UnJourEn14')
@@ -386,4 +383,4 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
             'form' => $form->createView()
         ));
     }
-} 
+}
