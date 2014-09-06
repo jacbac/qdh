@@ -11,123 +11,115 @@
 {%  endblock %}
 
 {% block body %}
-<div class="contenu">
+    <div class="contenu">
+        {%  if photos is defined and photos is not null and photos|length>0 %}
+            <div class="row chronos">
+                <h2>Les photographies de l'OpenData</h2>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
 
-    {%  if photos is defined and photos is not null and photos|length>0 %}
-        <div class="row chronos">
-            <h2>Les photographies de l'OpenData</h2>
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-
-                    {% if cate is defined and cate is not null and cate|length>0  %}
-                        {% if result is defined and result is not null and result|length>0 %}
+                        {% if cate is defined and cate is not null and cate|length>0  %}
+                            {% if result is defined and result is not null and result|length>0 %}
 
 
-                    <div class="visible-xs panel-heading">
-                        <a href="#gallerie" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ req }}</a>
-                    </div>
+                        <div class="visible-xs panel-heading">
+                            <a href="#gallerie" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ req }}</a>
+                        </div>
 
-                            <div id="gallerie" class="panel-collapse collapse in">
-                                <div  class="panel-body">
-                                    <h4>{{ req }}</h4>
-                                    <div class="container-fluid">
-                                        <div class="row popup-gallery ">
-                                                {% for r in result %}
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                    <a href="{{ r.videop }}" title="{{ req }} - {{ r.leg }}" author="Opendata" source="#">
-                                                        <img class="thumbnail img-responsive img-circle" src="{{ r.videov }}"></a>
+                        <div id="gallerie" class="panel-collapse collapse in">
+                            <div  class="panel-body">
+                                <h4>{{ req }}</h4>
+                                <div class="container-fluid">
+                                    <div class="row popup-gallery ">
+                                        {% for r in result %}
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <a href="{{ r.videop }}" title="{{ req }} - {{ r.leg }}" author="Opendata" source="#">
+                                                    <img class="thumbnail img-responsive img-circle" src="{{ r.videov }}">
+                                                </a>
                                             </div>
-                                                {% endfor %}
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                    <div class="visible-xs panel-heading">
-                        <a href="#general" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Description</a>
-                    </div>
-                    <div id="general" class="panel-collapse collapse">
-                        {% endif %}
-                        {% else %}
                         <div class="visible-xs panel-heading">
                             <a href="#general" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Description</a>
                         </div>
-                        <div id="general" class="panel-collapse collapse in">
-                        {% endif %}
-                        <div  class="panel-body">
-                            <p>
-                                Ce jeu de données provient d'un service public certifié. <br />
-                                Publié le 28 octobre 2013 par le Ministère de la Culture et de la Communication.
-                            </p>
-                            <p>Le nombre de photos présentes est important, d'où la nécéssité de filtrer ces données par les différentes catégories affichées sur cette page :
-                            <ul>
-                                {% for key, cat in tabCatPhoto %}
-                                    <li>{{ cat }}</li>
-                                {% endfor %}
-                            </ul>
-                            </p>
-                            <p>Fonds 14-18, extrait de la base Mémoire concernant la première guerre mondiale (18 982 notices textes et images). Ces photographies ont été réalisées à des fins de propagande et de documentation par les services français --notamment la Section photographique et cinématographique des armées à partir de 1917-- ou par les services alliés (Portugal, Italie). Elles montrent l’effort de guerre, les dégâts causés par les combats aux monuments historiques, l'évacuation des œuvres d'art, la situation à l’arrière du front (vie des civils, camps d’internement, de prisonniers, hôpitaux ou des militaires -théâtre aux armées ) en France au Maroc, au Cameroun (anciennes colonies allemandes)mais aussi le front Italien, Roumain, ou les Dardanelles, en Grèce... </p>
+                        <div id="general" class="panel-collapse collapse">
+                            {% endif %}
+                            {% else %}
+                            <div class="visible-xs panel-heading">
+                                <a href="#general" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Description</a>
+                            </div>
+                            <div id="general" class="panel-collapse collapse in">
+                            {% endif %}
+                            <div class="panel-body">
+                                <p>
+                                    Ce jeu de données provient d'un service public certifié. <br />
+                                    Publié le 28 octobre 2013 par le Ministère de la Culture et de la Communication.
+                                </p>
+                                <p>Le nombre de photos présentes est important, d'où la nécéssité de filtrer ces données par les différentes catégories affichées sur cette page :
+                                <ul>
+                                    {% for key, cat in tabCatPhoto %}
+                                        <li>{{ cat }}</li>
+                                    {% endfor %}
+                                </ul>
+                                </p>
+                                <p>Fonds 14-18, extrait de la base Mémoire concernant la première guerre mondiale (18 982 notices textes et images). Ces photographies ont été réalisées à des fins de propagande et de documentation par les services français --notamment la Section photographique et cinématographique des armées à partir de 1917-- ou par les services alliés (Portugal, Italie). Elles montrent l’effort de guerre, les dégâts causés par les combats aux monuments historiques, l'évacuation des œuvres d'art, la situation à l’arrière du front (vie des civils, camps d’internement, de prisonniers, hôpitaux ou des militaires -théâtre aux armées ) en France au Maroc, au Cameroun (anciennes colonies allemandes)mais aussi le front Italien, Roumain, ou les Dardanelles, en Grèce... </p>
+                            </div>
                         </div>
-                    </div>
 
-
-
-                    {% for key, cat in tabCatPhoto %}
-
-                        {% if req is defined and req is not null and req|length>0  %}
-                        {% endif %}
-                        <div class="visible-xs panel-heading">
-                            <a href="#{{ key }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ cat }}</a>
-                        </div>
-                        <div id="{{ key }}" class="panel-collapse collapse">
-                            <div  class="panel-body table-responsive ">
-                                {% for kay, p in photos %}
-                                    {% if kay == key %}
-                                        {% for koy, t in p %}
-                                            {% if t.title|length == 2 %}
-                                                <a href="{{  path('qd_blog_photos', {'cat': key, 'req': t.title }) }}">{{ t.title }}</a> -
-
+                        {% for key, cat in tabCatPhoto %}
+                            {% if req is defined and req is not null and req|length>0  %}
+                            {% endif %}
+                            <div class="visible-xs panel-heading">
+                                <a href="#{{ key }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ cat }}</a>
+                            </div>
+                            <div id="{{ key }}" class="panel-collapse collapse">
+                                <div  class="panel-body table-responsive ">
+                                    {% for kay, p in photos %}
+                                        {% if kay == key %}
+                                            {% for koy, t in p %}
+                                                {% if t.title|length == 2 %}
+                                                    <a href="{{  path('qd_blog_photos', {'cat': key, 'req': t.title }) }}">{{ t.title }}</a> -
                                                 {% else %}
                                                     <a href="{{  path('qd_blog_photos', {'cat': key, 'req': t.title }) }}">{{ t.title }}</a> |
                                                 {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endfor %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endif %}
-        </div>
+        {% endif %}
+    </div>
 {% endblock %}
+
 {% block side %}
     <div class="contenu fixed">
         <ul class="list-group">
-    {% if req is defined and req is not null and req|length>0  %}
-            <li class="hidden-xs list-group-item">
-
-            <a href="#gallerie" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ req }}</a>
-
-            </li>
-    {% endif %}
-            <li class="hidden-xs list-group-item">
-
-        <a href="#general" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Description</a>
-
-            </li>
-    {% for key, cat in tabCatPhoto %}
-        {% for kay, p in photos %}
-            {% if kay == key %}
-            <li class="hidden-xs list-group-item">
-                <!--<div class="panel-heading">-->
-                    <a href="#{{ key }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ cat }} </a><span class="badge">{{ p|length }}</span>
-
+            {% if req is defined and req is not null and req|length>0  %}
+                <li class="hidden-xs list-group-item">
+                    <a href="#gallerie" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ req }}</a>
                 </li>
             {% endif %}
-        {% endfor %}
-    {% endfor %}
-            </ul>
+            <li class="hidden-xs list-group-item">
+                <a href="#general" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Description</a>
+            </li>
+            {% for key, cat in tabCatPhoto %}
+                {% for kay, p in photos %}
+                    {% if kay == key %}
+                        <li class="hidden-xs list-group-item">
+                            <a href="#{{ key }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ cat }}</a>
+                            <span class="badge">{{ p|length }}</span>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

@@ -1,25 +1,21 @@
 {# src/Qd/BlogBundle/Resources/views/Blog/journaux.html.twig #}
 
 <div id="journaux">
-
     {%  if articles is defined and articles is not null and articles|length >0%}
-
-    {% for article in articles %}
+        {% for article in articles %}
             <div id="gallerie" class="panel-collapse collapse in">
                 <div  class="panel-body">
                     <div class="container-fluid">
                         <div class="row popup-gallery ">
-                                <h4><span>Extrait d'article paru dans </span><quote>{{ article.journal }}</quote></h4>
-                                <div>
-                                    <a href="{{ asset('bundles/qdblog/images/unes/'~article.img) }}" title="Extrait d'article paru dans {{ article.journal }}, le {{ article.dateparution|localizeddate('full', 'none') }}" author="{{ article.permalien }}" source="{{ article.permalien }}">
-                                        <img class="thumbnail img-responsive"  src="{{ asset('bundles/qdblog/images/unes/'~article.img) }}" /></a>
-                                </div>
+                            <h4><span>Extrait d'article paru dans </span><quote>{{ article.journal }}</quote></h4>
+                            <div>
+                                <a href="{{ asset('bundles/qdblog/images/unes/'~article.img) }}" title="Extrait d'article paru dans {{ article.journal }}, le {{ article.dateparution|localizeddate('full', 'none') }}" author="{{ article.permalien }}" source="{{ article.permalien }}">
+                                    <img class="thumbnail img-responsive"  src="{{ asset('bundles/qdblog/images/unes/'~article.img) }}" /></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
             <br />
             <div class="source"></div>
         {% endfor %}

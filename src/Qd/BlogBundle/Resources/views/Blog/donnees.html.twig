@@ -20,18 +20,17 @@
             <div class="title"><h4>Les photosgraphies de l'OpenData</h4></div>
                 <table class="table-responsive table-bordered table-striped">
                     {% for photo in photos %}
-                            <tr>
-                                <td class="chronodate"> {{ photo.datepv|localizeddate('medium', 'none') }} </td>
-                                <td> {{ photo.pays }}</td>
-                                <td> {{ photo.region }}</td>
-                                <td> {{ photo.edif }}</td>
-                                <td> {{ photo.leg }}</td>
-                                <td> {{ photo.obj }}</td>
-                                <td> {{ photo.lieucor }}</td>
-                                <td> {{ photo.autp }}</td>
-                                <td> {{ photo.serie }}</td>
-
-                            </tr>
+                        <tr>
+                            <td class="chronodate"> {{ photo.datepv|localizeddate('medium', 'none') }} </td>
+                            <td> {{ photo.pays }}</td>
+                            <td> {{ photo.region }}</td>
+                            <td> {{ photo.edif }}</td>
+                            <td> {{ photo.leg }}</td>
+                            <td> {{ photo.obj }}</td>
+                            <td> {{ photo.lieucor }}</td>
+                            <td> {{ photo.autp }}</td>
+                            <td> {{ photo.serie }}</td>
+                        </tr>
                     {% endfor %}
                 </table>
         </div>

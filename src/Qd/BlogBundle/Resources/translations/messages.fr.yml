@@ -1,8 +1,9 @@
 # src/Qd/BlogBundle/Resources/translations/messages.fr.yml
 
+# month
 January: Janvier
-February: Févrierrrrrrrrrrrrrrrrrrrr
-Marhc: Mars
+February: Février
+March: Mars
 April: Avril
 May: Mai
 June: Juin
@@ -12,6 +13,8 @@ September: Septembre
 October: Octobre
 November: Novembre
 December: Décembre
+
+# day
 Monday: Lundi
 Tuesday: Mardi
 Wednesday: Mercredi

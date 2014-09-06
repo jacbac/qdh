@@ -22,19 +22,9 @@ font-family: 'Marcellus SC', serif;
     format("truetype");
 }
 
-
 body {
-    background: url("../img/bg2.jpg") repeat #696961;/* #222222;*/
-    /*width: auto;
-    font-family: 'Gilda Display', serif;
-    font-family: 'Libre Baskerville', serif;
-    font-family: 'Poiret One', cursive;*/
+    background: url("../images/bg.jpg") repeat #696961;
     font-family: 'Domine', serif;
-        /*margin: auto;
-        color:  #353432;
-        min-height: 960px;*/
-    /*padding-top: 40px;
-    background-color: #fcf5e2;*/
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
@@ -48,28 +38,21 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 .navbar-inverse {
-    /*   background-color: #c23110;*/
     background-image: linear-gradient(#8A9196, #393939 60%, #000);
-    border-bottom: 1px solid #fcf5e2;/*#c99841;*/
+    border-bottom: 1px solid #fcf5e2;
     color: #fcf5e2;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
     color: #fcf5e2;
 }
 .jumbotron {
-    /*position: fixed;*/
     padding-top: 5px;
     padding-bottom: 5px;
 }
 .jumbotron, footer{
-    /*padding :10px 0px 5px 0px ;*/
-
-    background: url("../img/bg_oldpaper3.jpg") repeat-x;
+    background: ;
     margin-bottom: 1px;
-    /*color: #393939;
-    background-color: #3b453d;*/
 }
-
 .jumbotron h1, .jumbotron h2, .jumbotron h4, .jumbotron a {
     font-family: fzmOldTypewriter, 'Krona One', sans-serif;
     text-align: center;
@@ -84,34 +67,26 @@ h1, h2, h3, h4, h5, h6 {
     margin: auto;
     background-color: #ffff00;
 }
-
 .content{
     background-color: #433f39;
     border-radius: 3px;
     padding: 10px;
-    /*border-right: 3px solid #433f39;*/
 }
-#donnees, #side{
-
+#donnees,
+#side{
     padding-left: 5px;
     padding-right: 5px;
-    /*
-    border-radius: 3px;
-    border-right: 5px solid #433f39;*/
 }
-#donnees{
-    /*border-right: 10px solid #433f39;*/
+#donnees {
 }
 .contenu {
     padding: 5px;
     border-radius: 3px;
     background-color: #f2ede0;
-    /*background-color: #f2ede0;*/
 }
 #side{
 
 }
-
 #journaux img{
     margin: auto;
 }
@@ -125,7 +100,6 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     margin: auto;
 }
-
 #side .photo{
     width: auto;
 }
@@ -135,11 +109,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1em;
     line-height: 15px;
 }
-.tags i a::before, .tags i a::after{
-    /*content: url("../img/rib-1.png");*/
+.tags i a::before,
+.tags i a::after {
 }
-
-
 #journaux h4, .chrono h4 {
     background-color: #433f39;
     font-family: fzmOldTypewriter, 'Krona One', sans-serif;
@@ -152,14 +124,15 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 25px;
 }
 #donnees .panel-body {
-    /*padding : 0px*/
 }
-.panel, .panel-body {
+.panel,
+.panel-body {
     border: none;
     box-shadow: none;
     background-color: #f2ede0;
 }
-.chronos, .chronos .panel-body {
+.chronos,
+.chronos .panel-body {
     padding-left : 15px;
     padding-right : 15px
 }
@@ -185,7 +158,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .chrono a:hover {
     color: #4c618a;
-    /*font-weight: bold;*/
 }
 .chrono span, .chronos .panel-body span{
     cursor:pointer;
@@ -201,7 +173,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 90px;
     text-align: center;
 }
-
 footer{
     background-color: #EEEEEE;
     width: 100%;
@@ -213,7 +184,6 @@ footer{
 footer a {
     padding-right: 50px;
 }
-
 /* padding-bottom and top for image */
 .mfp-no-margins img.mfp-img {
     padding: 0;

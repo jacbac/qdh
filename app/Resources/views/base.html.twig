@@ -1,13 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Un jour en 14{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Average|Pathway+Gothic+One|Gilda+Display|Playfair+Display:400,700italic,400italic,900italic|Oswald:400,300|Play:400,700|Playfair+Display+SC:400,400italic,700italic,900,900italic,700|Krona+One|Marcellus+SC' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Domine|Gilda+Display|Poiret+One|Libre+Baskerville|Special+Elite|Changa+One|Playfair+Display+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ asset('bundles/qdblog/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/qdblog/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/qdblog/css/main.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--[if lt IE 10]>
+    <p class="browsehappy">Votre navigateur est <strong>un peu</strong> vieux. C'est le moment d'en changer ! <a href="http://browsehappy.com/"> Mettez-le à jour ou installez-en un plus récent </a> pour profiter au mieux de notre site.</p>
+    <![endif]-->
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            {{ render(controller("QdBlogBundle:Blog:menu")) }}
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        {% block header %}{% endblock %}
+    </div>
+
+    <div class="container">
+        <div class="row content">
+            <div class="col-md-12 ">
+                {% block content %}
+                    <div class="row">
+                        <div id="donnees" class="col-sm-8" >
+                            {% block body %}{% endblock %}
+                        </div>
+                        <div id="side" class="col-sm-4">
+                            {% block side %}{% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+<footer>
+    <p><a href="{{ path('qd_blog_mentions') }}">Mentions légales</a>  <a href="#">Crédits</a>  <a href="{{ path('qd_blog_contact') }}">Contact</a></p>
+</footer>
+
+<script>
+    function jsUpdateSize() {
+        // Get the dimensions of the viewport
+        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        document.getElementById('jsWidth').innerHTML = width;
+        document.getElementById('jsHeight').innerHTML = height;
+    };
+
+    window.onload   = jsUpdateSize;     // When the page first loads
+    window.onresize = jsUpdateSize;     // When the browser changes size
+</script>
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/qdblog/js/jquery-1.11.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/qdblog/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/qdblog/js/jquery.magnific-popup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/qdblog/js/main.js') }}"></script>
+{% endblock %}
+</body>
 </html>
