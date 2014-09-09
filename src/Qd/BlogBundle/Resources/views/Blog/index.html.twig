@@ -7,36 +7,64 @@
 {%  endblock %}
 
 {% block header %}
-    <h2>Un jour, pendant la première guerre mondiale</h2>
-{%  endblock %}
-
-{% block body %}
-    <div class="contenu">
-        <h2>Bienvenue sur ce site</h2>
-        <p>
-            Le site "Un jour en 14" est en ligne depuis peu. <br />L'idée de ce site est de présenter le conflit par une vision quotidienne des événements.<br />
-            Vous pourrez naviguez à travers les dates majeures ou mineures de cette guerre.
-            Outre l'actualité quotidienne composée d'un extrait de la Presse de l'époque, de la liste des faits ayant eu lieu ce jour,
-            le site offre une approche chronologique du conflit par zone géographique (front de l'Ouest, de l'Est, etc.) ou par thématique (Aviation, Marine, etc.).<br />
-            De plus, et cela grâce à l'aide du dispositif OpenData mis en place par le Ministère de la Culture et de la Communication,
-            il vous sera possible de consulter les 18 982 photos issues de la plateforme <a href="http://www.data.gouv.fr" target="_blank">data.gouv.fr</a>.
-            <br />
-            Ce site n'est pas encore terminé, mais il était important de le mettre rapidement en ligne.
-            La page d'actualité quotidienne sera étoffée par un extrait de carnet de soldats et de photos diverses.<br />
-            Enfin, l'actualité quotidienne concerne actuellement l'année 1914, les informations concernants les années 195, 1916, 1917 et 1918 seront mis en ligne dans les prochains mois.
-        </p>
-        <p>Aujourd'hui, nous sommes le {{ "now"|localizeddate('full', 'none') }}, le conflit ne commençant que début août, vous accéderez donc au <b>{{ date|localizeddate('full', 'none') }}</b>
-        <a href="{{ path('qd_blog_blog') }}">Entrez</a></p>
-    </div>
+    <h1>Un jour en 14</h1>
+    <p>Récit de la guerre 14-18 au jour le jour</p>
 {% endblock %}
 
-{% block side %}
-    <div class="contenu">
-        <p>
-            Dans ce site, vous aurez accès à une chronologie de 400 événements, classés par thème<br />
-            la possibilité de visionner pres de 18 000 photos<br/>
-            de consulter les différentes Unes de la presse durant les 1564 jours de conflits !!<br />
-            Bonne lecture !
-        </p>
+{% block content %}
+    <div class="container page page-home">
+        <div class="row section">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h2 class="section-title">Le Centenaire</h2>
+                <div class="section-intro">
+                    <p>2014, Année des commémorations de la Première Guerre Mondiale.</p>
+                    <p>C'est l'occasion de présenter le conflit d'une manière originale, de regarder les choses sous différents angles, de rechercher, de (se) questionner, de réfléchir.</p>
+                    <p>Le site <em>Un jour en 14</em> est en ligne depuis peu.</p>
+                    <p>Par cet intermédiaire, nous souhaitons vous présenter le conflit via une vision quotidienne des événements.</p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <img src="http://lorempixel.com/600/400/abstract/5" class="img-thumbnail" />
+            </div>
+        </div>
+        <div class="row section">
+            <div class="col-xs-12 col-md-6">
+                <img src="http://lorempixel.com/600/400/abstract/5" class="img-thumbnail" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h2 class="section-title">La grande Histoire aux travers des petites histoires</h2>
+                <div class="section-intro">
+                    <p>Retracer la grande Histoire, celle des livres d'histoire, avec les multiples récits et anecdotes qui l'entourent.</p>
+                    <p>Internet offre à présent un formidable réservoir de données sur la Grande Guerre.</p>
+                    <p>La base actuelle du site repose - pour le moment - sur des données entierement libres glanées sur le web.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row section">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h2 class="section-title">Naviguer dans le temps</h2>
+                <div class="section-intro">
+                    <p>Actuellement, le site se concentre entre le 1er août 1914 et le 11 novembre 1918.</p>
+                    <p>L'idée est d'accéder à l'actualité de la guerre 100 ans, jour pour jour, avant aujourd'hui.</p>
+                    <p>Dans ce site, vous aurez accès à une chronologie de 400 événements, classés par thème, comme la possibilité de visionner près de 18000 photos ou encore de consulter les différentes Unes de la presse durant les 1564 jours de conflits !</p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <img src="http://lorempixel.com/600/400/abstract/5" class="img-thumbnail" />
+            </div>
+        </div>
+        <div class="row section">
+            <div class="col-xs-12 col-md-6">
+                <img src="http://lorempixel.com/600/400/abstract/5" class="img-thumbnail" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h2 class="section-title">Un jour en 14, site en construction</h2>
+                <div class="section-intro">
+                    <p>Le site n'est pas terminé, loin de là... Les données que l'on peut trouver sont innombrables.</p>
+                    <p>On pourra toujours ajouter des informations, en enlever, en rectifier.</p>
+                    <p>Le travail ne fait que commencer, ne soyez pas surpris si certaines pages manquent encore de contenus.</p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

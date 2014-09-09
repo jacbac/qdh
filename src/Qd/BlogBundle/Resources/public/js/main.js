@@ -1,22 +1,20 @@
-/*
-$(document).ready(function(){
-
-});*/
-$('.myModal').modal('toggle');
-
-$('.chrono .content').click(function(){
-    var text = $(this).children('div.source');
-
-    if (text.is(':hidden')) {
-        text.slideDown('400');
-        $(this).children('span').html('cacher');
-    } else {
-        text.slideUp('400');
-        $(this).children('span').html('source');
-    }
-});
-/* gallery */
 $(document).ready(function() {
+
+    $('.myModal').modal('toggle');
+
+    $('.chrono .content').click(function() {
+        var text = $(this).children('div.source');
+
+        if (text.is(':hidden')) {
+            text.slideDown('400');
+            $(this).children('span').html('cacher');
+        } else {
+            text.slideUp('400');
+            $(this).children('span').html('source');
+        }
+    });
+
+    /* gallery */
     $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -34,10 +32,6 @@ $(document).ready(function() {
             }
         }
     });
-});
-
-
-$(document).ready(function() {
 
     $('.image-popup-vertical-fit').magnificPopup({
         type: 'image',
@@ -46,7 +40,6 @@ $(document).ready(function() {
         image: {
             verticalFit: true
         }
-
     });
 
     $('.image-popup-fit-width').magnificPopup({
@@ -73,44 +66,3 @@ $(document).ready(function() {
     });
 
 });
-//$('.change').click(function(){
-    //var action = $(this).attr("name");
-    //alert(action);
-    /*
-    $.ajax({
-        url : $(this).attr("href"),
-        cache: false,
-        dataType: 'json',
-        data: {'action':action}, //{'madate=':madate,'chrono=':chrono,'article=':article,'data=':data },
-        success : function(json) {
-            //console.log (JSON.parse (json));
-            alert(json['date']),
-            $("#donnees").html(json['donnees']),
-            $(".date").html(json['date']);
-            searchDateDD(json);
-        },
-        error : function(XMLHttpRequest, textStatus, errorThrown){
-            alert(textStatus);
-        }
-    })
-    //$('#donnees'), {query:(action)};
-    return false;*/
-//});
-//function searchDateDD(response){
- //   $('#header').fadeOut(300, function(){
- //       $('#header').empty();
- //       $('#header').html(response),
- //       $('#header').fadeIn(500);
- //   });
- //   $('#content').fadeOut(300, function(){
- //      $('#content').empty();
-  //      $('#content').html(response),
-        //$('#donnees').load(
-          //  $(this),{ action: html}
-        //);
-        //$('#donnees').append();
-  //      $('#content').fadeIn(500);
-  //  });
-  //  return false;
-//}
-//});

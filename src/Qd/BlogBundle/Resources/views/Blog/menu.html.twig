@@ -1,6 +1,5 @@
 {# src/Qd/BlogBundle/Resources/views/Blog/menu.html.twig #}
 
-
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -8,22 +7,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ path("qd_blog_homepage") }}" >Accueil <i><span id="jsWidth">0</span> x
-            <span id="jsHeight">0</span></i></a>
-
+    <a class="navbar-brand" href="{{ path("qd_blog_homepage") }}" >Accueil</a>
 </div>
 
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right">
-        <li></li>
         {% for menu in liste_menu %}
-            {% if menu.id ==4  %}
+            {% if menu.id == 4 %}
                 <li><a href="{{ path(menu.url) }}" class="navbar-brand">{{ menu.title|localizeddate('medium', 'none') }}</a></li>
-
             {% else %}
-            <li><a href="{{ path(menu.url) }}" >{{ menu.title }}</a></li>
+                <li><a href="{{ path(menu.url) }}" >{{ menu.title }}</a></li>
             {% endif %}
         {% endfor %}
     </ul>
  </div>
-
