@@ -25,38 +25,36 @@ class tags
      * @var string
      *
      * @ORM\Column(name="nom", type="text")
-     *
      */
-    //
     private $nom;
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-        //@ORM\Column(name="nom", type="text")
     }
 
     /**
      * Set nom
      *
-     * @param string $nom
+     * @param  string $nom
      * @return tags
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {

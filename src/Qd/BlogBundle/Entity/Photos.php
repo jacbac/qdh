@@ -41,14 +41,12 @@ class Photos
      * @ORM\ManyToOne(targetEntity="Source")
      * @ORM\JoinColumn(nullable=true)
      */
- // @ORM\Column(name="source", type="integer")
     private $source;
-
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -58,20 +56,20 @@ class Photos
     /**
      * Set nom
      *
-     * @param string $nom
+     * @param  string $nom
      * @return Photos
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -81,20 +79,20 @@ class Photos
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string $path
      * @return Photos
      */
     public function setPath($path)
     {
         $this->path = $path;
-    
+
         return $this;
     }
 
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -104,13 +102,13 @@ class Photos
     /**
      * Set source
      *
-     * @param integer $source
+     * @param  integer $source
      * @return Photos
      */
     public function setSource($source)
     {
         $this->source = $source;
-    
+
         return $this;
     }
 
@@ -120,7 +118,6 @@ class Photos
      * @return Qd\BlogBundle\Entity\Source
      *
      */
-    // @return integer
     public function getSource()
     {
         return $this->source;

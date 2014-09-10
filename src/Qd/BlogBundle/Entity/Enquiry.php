@@ -50,7 +50,7 @@ class Enquiry
 
     public function getBody()
     {
-    return $this->body;
+        return $this->body;
     }
 
     public function setBody($body)
@@ -66,9 +66,6 @@ class Enquiry
 
         $metadata->addPropertyConstraint('subject', new NotBlank());
 
-        $metadata->addPropertyConstraint( 'subject', new Length( array( 'min' => 5) ) );
-
-        $metadata->addPropertyConstraint( 'subject', new Length( array( 'max' => 10) ) );
-
+        $metadata->addPropertyConstraint('subject', new Length(array('max' => 10)));
     }
 }

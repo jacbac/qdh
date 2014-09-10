@@ -20,9 +20,7 @@ class BlogController extends Controller
         if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
-        //if ($date->format('Y-m-d') == '1914-08-01') {
-        //    return $this->redirect( $this->generateUrl('qd_blog_blog'));
-        //}
+
         return $this->render('QdBlogBundle:Blog:index.html.twig', array('date' => $date));
     }
 
@@ -113,7 +111,7 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('QdBlogBundle:Opendata');
-        $datas = $repo->findBy(array('datepv' =>$madate),array('datepv' =>'desc'), 3, 0);
+        $datas = $repo->findBy(array('datepv' =>$madate), array('datepv' =>'desc'), 3, 0);
 
         return $datas;
     }
@@ -202,7 +200,7 @@ class BlogController extends Controller
         $madate = $date->format('Y-m-d');
         $session->set('madate', $madate);
 
-       return $this->render('QdBlogBundle:Blog:blog.html.twig');
+        return $this->render('QdBlogBundle:Blog:blog.html.twig');
 
     }
 
@@ -211,15 +209,14 @@ class BlogController extends Controller
         if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
+
         $date = $this->getRequest()->getSession()->get('date');
         $madate = $this->getRequest()->getSession()->get('madate');
 
         $liste = array(
-            array('id' => 4, 'title' => $date, 'url' => 'qd_blog_blog'),
+            array('id' => 4, 'title' => $date,                   'url' => 'qd_blog_blog'),
             array('id' => 5, 'title' => 'Listes Chronologiques', 'url' => 'qd_blog_lstchrono'),
-            array('id' => 6, 'title' => 'Photos', 'url' => 'qd_blog_photos'),
-            //array('id' => 7, 'title' => 'Données libres', 'url' => 'qd_blog_donnees'),
-            //array('id' => 68, 'title' => 'Ajouter', 'url' => 'qd_blog_ajouter')/**/
+            array('id' => 6, 'title' => 'Photos',                'url' => 'qd_blog_photos'),
         );
 
         return $this->render('QdBlogBundle:Blog:menu.html.twig', array('liste_menu' => $liste));
@@ -243,10 +240,10 @@ class BlogController extends Controller
             $date = $this->donneDate();
         }
         $tabCatPhoto = $this->container->getParameter('tabCatPhoto');
-        //var_dump($tabCatPhoto);
+
         $photos = $this->donnePhotos();
-        if ($cate = $this->getRequest()->get('cat') AND $req = $this->getRequest()->get('req')) {
-            //var_dump($cate); var_dump($req);
+        if ($cate = $this->getRequest()->get('cat') && $req = $this->getRequest()->get('req')) {
+
             $em = $this->getDoctrine()->getManager();
             $repo = $em->getRepository('QdBlogBundle:Opendata');
             $result =  $repo->myFindByReq($cate, $req);
@@ -340,7 +337,7 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
         if ($this->getRequest()->getMethod() == 'POST') {
             $this->get('session')->getFlashBag()->add('carnet enregistré');
 
-            return $this->redirect( $this->generateUrl('QdBlogBundle:Blog:voir.html.twig', array('id' => $carnet->getId())));
+            return $this->redirect($this->generateUrl('QdBlogBundle:Blog:voir.html.twig', array('id' => $carnet->getId())));
         }
 
         return $this->render('QdBlogBundle:Blog:ajouter.html.twig');
@@ -363,7 +360,6 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
             $form->bind($request);
 
             if ($form->isValid()) {
-
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Message du UnJourEn14')
                     ->setFrom('toto@titi.fr')

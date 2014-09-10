@@ -49,12 +49,10 @@ class Carnet
      */
     private $remerciement;
 
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,20 +62,20 @@ class Carnet
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return Carnet
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -87,20 +85,20 @@ class Carnet
     /**
      * Set auteur
      *
-     * @param string $auteur
+     * @param  string $auteur
      * @return Carnet
      */
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
-    
+
         return $this;
     }
 
     /**
      * Get auteur
      *
-     * @return string 
+     * @return string
      */
     public function getAuteur()
     {
@@ -110,20 +108,20 @@ class Carnet
     /**
      * Set texte
      *
-     * @param string $texte
+     * @param  string $texte
      * @return Carnet
      */
     public function setTexte($texte)
     {
         $this->texte = $texte;
-    
+
         return $this;
     }
 
     /**
      * Get texte
      *
-     * @return string 
+     * @return string
      */
     public function getTexte()
     {
@@ -133,20 +131,20 @@ class Carnet
     /**
      * Set remerciement
      *
-     * @param string $remerciement
+     * @param  string $remerciement
      * @return Carnet
      */
     public function setRemerciement($remerciement)
     {
         $this->remerciement = $remerciement;
-    
+
         return $this;
     }
 
     /**
      * Get remerciement
      *
-     * @return string 
+     * @return string
      */
     public function getRemerciement()
     {

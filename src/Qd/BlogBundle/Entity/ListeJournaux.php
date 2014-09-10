@@ -49,12 +49,10 @@ class ListeJournaux
      */
     private $changedOn;
 
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,20 +62,20 @@ class ListeJournaux
     /**
      * Set titre
      *
-     * @param string $titre
+     * @param  string        $titre
      * @return ListeJournaux
      */
     public function setTitre($titre)
     {
         $this->titre = $titre;
-    
+
         return $this;
     }
 
     /**
      * Get titre
      *
-     * @return string 
+     * @return string
      */
     public function getTitre()
     {
@@ -87,20 +85,20 @@ class ListeJournaux
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string        $description
      * @return ListeJournaux
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -110,20 +108,20 @@ class ListeJournaux
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param  \DateTime     $createdOn
      * @return ListeJournaux
      */
     public function setCreatedOn($createdOn)
     {
         $this->createdOn = $createdOn;
-    
+
         return $this;
     }
 
     /**
      * Get createdOn
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedOn()
     {
@@ -133,20 +131,20 @@ class ListeJournaux
     /**
      * Set changedOn
      *
-     * @param \DateTime $changedOn
+     * @param  \DateTime     $changedOn
      * @return ListeJournaux
      */
     public function setChangedOn($changedOn)
     {
         $this->changedOn = $changedOn;
-    
+
         return $this;
     }
 
     /**
      * Get changedOn
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getChangedOn()
     {

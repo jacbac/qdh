@@ -62,7 +62,6 @@ class Soldat
      * @ORM\ManyToOne(targetEntity="Source")
      * @ORM\JoinColumn(nullable=true)
      */
-    //@ORM\Column(name="source", type="integer")
     private $source;
 
     /**
@@ -72,7 +71,6 @@ class Soldat
      * @ORM\ManyToOne(targetEntity="Photos")
      * @ORM\JoinColumn(nullable=true)
      */
-    //@ORM\Column(name="photo", type="integer")
     private $photo;
 
     /**
@@ -82,14 +80,12 @@ class Soldat
      * @ORM\ManyToOne(targetEntity="Carnet")
      * @ORM\JoinColumn(nullable=true)
      */
-    //@ORM\Column(name="photo", type="integer")
     private $carnet;
-
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -99,20 +95,20 @@ class Soldat
     /**
      * Set nom
      *
-     * @param string $nom
+     * @param  string $nom
      * @return Soldat
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -122,20 +118,20 @@ class Soldat
     /**
      * Set prenom
      *
-     * @param string $prenom
+     * @param  string $prenom
      * @return Soldat
      */
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
@@ -145,20 +141,20 @@ class Soldat
     /**
      * Set datenais
      *
-     * @param \DateTime $datenais
+     * @param  \DateTime $datenais
      * @return Soldat
      */
     public function setDatenais($datenais)
     {
         $this->datenais = $datenais;
-    
+
         return $this;
     }
 
     /**
      * Get datenais
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatenais()
     {
@@ -168,20 +164,20 @@ class Soldat
     /**
      * Set datedec
      *
-     * @param \DateTime $datedec
+     * @param  \DateTime $datedec
      * @return Soldat
      */
     public function setDatedec($datedec)
     {
         $this->datedec = $datedec;
-    
+
         return $this;
     }
 
     /**
      * Get datedec
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatedec()
     {
@@ -191,20 +187,20 @@ class Soldat
     /**
      * Set pres
      *
-     * @param string $pres
+     * @param  string $pres
      * @return Soldat
      */
     public function setPres($pres)
     {
         $this->pres = $pres;
-    
+
         return $this;
     }
 
     /**
      * Get pres
      *
-     * @return string 
+     * @return string
      */
     public function getPres()
     {
@@ -214,13 +210,13 @@ class Soldat
     /**
      * Set source
      *
-     * @param integer $source
+     * @param  integer $source
      * @return Soldat
      */
     public function setSource($source)
     {
         $this->source = $source;
-    
+
         return $this;
     }
 
@@ -229,7 +225,6 @@ class Soldat
      *
      * @return Qd\BlogBundle\Entity\Source
      */
-    // @return integer
     public function getSource()
     {
         return $this->source;
@@ -240,7 +235,6 @@ class Soldat
      *
      * @return Qd\BlogBundle\Entity\carnet
      */
-    // @return integer
     public function getCarnet()
     {
         return $this->carnet;
@@ -249,13 +243,13 @@ class Soldat
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param  string $photo
      * @return Soldat
      */
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-    
+
         return $this;
     }
 
@@ -265,7 +259,6 @@ class Soldat
      *
      * @return Qd\BlogBundle\Entity\Photos
      */
-    //@return string
     public function getPhoto()
     {
         return $this->photo;

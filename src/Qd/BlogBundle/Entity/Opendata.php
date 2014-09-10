@@ -196,12 +196,10 @@ class Opendata
      */
     private $changedOn;
 
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -211,20 +209,20 @@ class Opendata
     /**
      * Set ref
      *
-     * @param string $ref
+     * @param  string   $ref
      * @return Opendata
      */
     public function setRef($ref)
     {
         $this->ref = $ref;
-    
+
         return $this;
     }
 
     /**
      * Get ref
      *
-     * @return string 
+     * @return string
      */
     public function getRef()
     {
@@ -234,20 +232,20 @@ class Opendata
     /**
      * Set nump
      *
-     * @param string $nump
+     * @param  string   $nump
      * @return Opendata
      */
     public function setNump($nump)
     {
         $this->nump = $nump;
-    
+
         return $this;
     }
 
     /**
      * Get nump
      *
-     * @return string 
+     * @return string
      */
     public function getNump()
     {
@@ -257,20 +255,20 @@ class Opendata
     /**
      * Set pays
      *
-     * @param string $pays
+     * @param  string   $pays
      * @return Opendata
      */
     public function setPays($pays)
     {
         $this->pays = $pays;
-    
+
         return $this;
     }
 
     /**
      * Get pays
      *
-     * @return string 
+     * @return string
      */
     public function getPays()
     {
@@ -280,20 +278,20 @@ class Opendata
     /**
      * Set reg
      *
-     * @param string $reg
+     * @param  string   $reg
      * @return Opendata
      */
     public function setReg($reg)
     {
         $this->reg = $reg;
-    
+
         return $this;
     }
 
     /**
      * Get reg
      *
-     * @return string 
+     * @return string
      */
     public function getReg()
     {
@@ -303,20 +301,20 @@ class Opendata
     /**
      * Set dpt
      *
-     * @param string $dpt
+     * @param  string   $dpt
      * @return Opendata
      */
     public function setDpt($dpt)
     {
         $this->dpt = $dpt;
-    
+
         return $this;
     }
 
     /**
      * Get dpt
      *
-     * @return string 
+     * @return string
      */
     public function getDpt()
     {
@@ -326,20 +324,20 @@ class Opendata
     /**
      * Set com
      *
-     * @param string $com
+     * @param  string   $com
      * @return Opendata
      */
     public function setCom($com)
     {
         $this->com = $com;
-    
+
         return $this;
     }
 
     /**
      * Get com
      *
-     * @return string 
+     * @return string
      */
     public function getCom()
     {
@@ -349,20 +347,20 @@ class Opendata
     /**
      * Set insee
      *
-     * @param string $insee
+     * @param  string   $insee
      * @return Opendata
      */
     public function setInsee($insee)
     {
         $this->insee = $insee;
-    
+
         return $this;
     }
 
     /**
      * Get insee
      *
-     * @return string 
+     * @return string
      */
     public function getInsee()
     {
@@ -372,20 +370,20 @@ class Opendata
     /**
      * Set edif
      *
-     * @param string $edif
+     * @param  string   $edif
      * @return Opendata
      */
     public function setEdif($edif)
     {
         $this->edif = $edif;
-    
+
         return $this;
     }
 
     /**
      * Get edif
      *
-     * @return string 
+     * @return string
      */
     public function getEdif()
     {
@@ -395,20 +393,20 @@ class Opendata
     /**
      * Set adresse
      *
-     * @param string $adresse
+     * @param  string   $adresse
      * @return Opendata
      */
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
     /**
      * Get adresse
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
@@ -418,20 +416,20 @@ class Opendata
     /**
      * Set leg
      *
-     * @param string $leg
+     * @param  string   $leg
      * @return Opendata
      */
     public function setLeg($leg)
     {
         $this->leg = $leg;
-    
+
         return $this;
     }
 
     /**
      * Get leg
      *
-     * @return string 
+     * @return string
      */
     public function getLeg()
     {
@@ -441,20 +439,20 @@ class Opendata
     /**
      * Set obj
      *
-     * @param string $obj
+     * @param  string   $obj
      * @return Opendata
      */
     public function setObj($obj)
     {
         $this->obj = $obj;
-    
+
         return $this;
     }
 
     /**
      * Get obj
      *
-     * @return string 
+     * @return string
      */
     public function getObj()
     {
@@ -464,20 +462,20 @@ class Opendata
     /**
      * Set lieucor
      *
-     * @param string $lieucor
+     * @param  string   $lieucor
      * @return Opendata
      */
     public function setLieucor($lieucor)
     {
         $this->lieucor = $lieucor;
-    
+
         return $this;
     }
 
     /**
      * Get lieucor
      *
-     * @return string 
+     * @return string
      */
     public function getLieucor()
     {
@@ -487,20 +485,20 @@ class Opendata
     /**
      * Set autp
      *
-     * @param string $autp
+     * @param  string   $autp
      * @return Opendata
      */
     public function setAutp($autp)
     {
         $this->autp = $autp;
-    
+
         return $this;
     }
 
     /**
      * Get autp
      *
-     * @return string 
+     * @return string
      */
     public function getAutp()
     {
@@ -510,20 +508,20 @@ class Opendata
     /**
      * Set autoeu
      *
-     * @param string $autoeu
+     * @param  string   $autoeu
      * @return Opendata
      */
     public function setAutoeu($autoeu)
     {
         $this->autoeu = $autoeu;
-    
+
         return $this;
     }
 
     /**
      * Get autoeu
      *
-     * @return string 
+     * @return string
      */
     public function getAutoeu()
     {
@@ -533,20 +531,20 @@ class Opendata
     /**
      * Set scle
      *
-     * @param string $scle
+     * @param  string   $scle
      * @return Opendata
      */
     public function setScle($scle)
     {
         $this->scle = $scle;
-    
+
         return $this;
     }
 
     /**
      * Get scle
      *
-     * @return string 
+     * @return string
      */
     public function getScle()
     {
@@ -556,20 +554,20 @@ class Opendata
     /**
      * Set datepv
      *
-     * @param string $datepv
+     * @param  string   $datepv
      * @return Opendata
      */
     public function setDatepv($datepv)
     {
         $this->datepv = $datepv;
-    
+
         return $this;
     }
 
     /**
      * Get datepv
      *
-     * @return string 
+     * @return string
      */
     public function getDatepv()
     {
@@ -579,20 +577,20 @@ class Opendata
     /**
      * Set serie
      *
-     * @param string $serie
+     * @param  string   $serie
      * @return Opendata
      */
     public function setSerie($serie)
     {
         $this->serie = $serie;
-    
+
         return $this;
     }
 
     /**
      * Get serie
      *
-     * @return string 
+     * @return string
      */
     public function getSerie()
     {
@@ -602,20 +600,20 @@ class Opendata
     /**
      * Set typdoc
      *
-     * @param string $typdoc
+     * @param  string   $typdoc
      * @return Opendata
      */
     public function setTypdoc($typdoc)
     {
         $this->typdoc = $typdoc;
-    
+
         return $this;
     }
 
     /**
      * Get typdoc
      *
-     * @return string 
+     * @return string
      */
     public function getTypdoc()
     {
@@ -625,20 +623,20 @@ class Opendata
     /**
      * Set lbase
      *
-     * @param string $lbase
+     * @param  string   $lbase
      * @return Opendata
      */
     public function setLbase($lbase)
     {
         $this->lbase = $lbase;
-    
+
         return $this;
     }
 
     /**
      * Get lbase
      *
-     * @return string 
+     * @return string
      */
     public function getLbase()
     {
@@ -648,20 +646,20 @@ class Opendata
     /**
      * Set copy
      *
-     * @param string $copy
+     * @param  string   $copy
      * @return Opendata
      */
     public function setCopy($copy)
     {
         $this->copy = $copy;
-    
+
         return $this;
     }
 
     /**
      * Get copy
      *
-     * @return string 
+     * @return string
      */
     public function getCopy()
     {
@@ -671,20 +669,20 @@ class Opendata
     /**
      * Set videov
      *
-     * @param string $videov
+     * @param  string   $videov
      * @return Opendata
      */
     public function setVideov($videov)
     {
         $this->videov = $videov;
-    
+
         return $this;
     }
 
     /**
      * Get videov
      *
-     * @return string 
+     * @return string
      */
     public function getVideov()
     {
@@ -694,20 +692,20 @@ class Opendata
     /**
      * Set videop
      *
-     * @param string $videop
+     * @param  string   $videop
      * @return Opendata
      */
     public function setVideop($videop)
     {
         $this->videop = $videop;
-    
+
         return $this;
     }
 
     /**
      * Get videop
      *
-     * @return string 
+     * @return string
      */
     public function getVideop()
     {
@@ -717,20 +715,20 @@ class Opendata
     /**
      * Set dateqd
      *
-     * @param \DateTime $dateqd
+     * @param  \DateTime $dateqd
      * @return Opendata
      */
     public function setDateqd($dateqd)
     {
         $this->dateqd = $dateqd;
-    
+
         return $this;
     }
 
     /**
      * Get dateqd
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateqd()
     {
@@ -740,20 +738,20 @@ class Opendata
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param  \DateTime $createdOn
      * @return Opendata
      */
     public function setCreatedOn($createdOn)
     {
         $this->createdOn = $createdOn;
-    
+
         return $this;
     }
 
     /**
      * Get createdOn
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedOn()
     {
@@ -763,20 +761,20 @@ class Opendata
     /**
      * Set changedOn
      *
-     * @param \DateTime $changedOn
+     * @param  \DateTime $changedOn
      * @return Opendata
      */
     public function setChangedOn($changedOn)
     {
         $this->changedOn = $changedOn;
-    
+
         return $this;
     }
 
     /**
      * Get changedOn
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getChangedOn()
     {

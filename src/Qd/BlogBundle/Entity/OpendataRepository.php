@@ -15,128 +15,101 @@ class OpendataRepository extends EntityRepository
 {
     public function myFindByAll()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $queryBuilder = $this->_em->createQueryBuilder()
             ->select('o.pays', 'o.reg', 'o.edif', 'o.leg', 'o.obj', 'o.lieucor', 'o.autp', 'o.serie')
             ->from($this->_entityName, 'o');
 
         $query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
 
-        return $resultats;
+        return $query->getResult();
     }
 
-    public function myFindData($madate){
+    public function myFindData($madate)
+    {
         $query = $this->_em->createQuery(
             'SELECT c.videov, c.videop, c.adresse, c.leg
             FROM QdBlogBundle:Opendata c
-            WHERE c.datepv = ?1');
+            WHERE c.datepv = ?1'
+        );
+
         $query->setParameter(1, $madate);
 
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
 
     public function myFindByReq($cat, $req)
     {
         $query = $this->_em->createQuery(
-           'SELECT c.videov, c.videop, c.leg FROM QdBlogBundle:Opendata c WHERE c.'.$cat .'= ?2');
-        //$query->setParameters(array(1 => 'c.'.$cat, 2 => $req));
+           'SELECT c.videov, c.videop, c.leg FROM QdBlogBundle:Opendata c WHERE c.'.$cat .'= ?2'
+        );
+
         $query->setParameter(2 , $req);
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
 
     public function myDistinctPays()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.pays) as title FROM QdBlogBundle:Opendata c  ORDER BY c.pays ASC');
+            'SELECT DISTINCT(c.pays) as title FROM QdBlogBundle:Opendata c  ORDER BY c.pays ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctRegion()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.reg) as title FROM QdBlogBundle:Opendata c  ORDER BY c.reg ASC');
+            'SELECT DISTINCT(c.reg) as title FROM QdBlogBundle:Opendata c  ORDER BY c.reg ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctDpt()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.dpt) as title FROM QdBlogBundle:Opendata c  ORDER BY c.dpt ASC');
+            'SELECT DISTINCT(c.dpt) as title FROM QdBlogBundle:Opendata c  ORDER BY c.dpt ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctCom()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.com) as title FROM QdBlogBundle:Opendata c ORDER BY c.com ASC ');
+            'SELECT DISTINCT(c.com) as title FROM QdBlogBundle:Opendata c ORDER BY c.com ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctLeg()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.leg) as title FROM QdBlogBundle:Opendata c ORDER BY c.leg ASC ');
+            'SELECT DISTINCT(c.leg) as title FROM QdBlogBundle:Opendata c ORDER BY c.leg ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctAutp()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.autp) as title FROM QdBlogBundle:Opendata c ORDER BY c.autp ASC');
+            'SELECT DISTINCT(c.autp) as title FROM QdBlogBundle:Opendata c ORDER BY c.autp ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctAutoeu()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.autoeu) as title FROM QdBlogBundle:Opendata c  ORDER BY c.autoeu ASC');
+            'SELECT DISTINCT(c.autoeu) as title FROM QdBlogBundle:Opendata c  ORDER BY c.autoeu ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
     public function myDistinctSerie()
     {
-        //$queryBuilder = $this->createQueryBuilder('a');
         $query = $this->_em->createQuery(
-            'SELECT DISTINCT(c.serie) as title FROM QdBlogBundle:Opendata c  ORDER BY c.serie ASC');
+            'SELECT DISTINCT(c.serie) as title FROM QdBlogBundle:Opendata c  ORDER BY c.serie ASC'
+        );
 
-        //$query = $queryBuilder->getQuery();
-        $resultats = $query->getResult();
-
-        return $resultats;
+        return $query->getResult();
     }
 }

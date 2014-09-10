@@ -5,12 +5,12 @@ namespace Qd\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * calendrier
+ * Calendrier
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class calendrier
+class Calendrier
 {
     /**
      * @var integer
@@ -35,11 +35,10 @@ class calendrier
      */
     private $dateQd;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -49,20 +48,20 @@ class calendrier
     /**
      * Set jour
      *
-     * @param string $jour
+     * @param  string     $jour
      * @return calendrier
      */
     public function setJour($jour)
     {
         $this->jour = $jour;
-    
+
         return $this;
     }
 
     /**
      * Get jour
      *
-     * @return string 
+     * @return string
      */
     public function getJour()
     {
@@ -72,20 +71,20 @@ class calendrier
     /**
      * Set dateQd
      *
-     * @param string $dateQd
+     * @param  string     $dateQd
      * @return calendrier
      */
     public function setDateQd($dateQd)
     {
         $this->dateQd = $dateQd;
-    
+
         return $this;
     }
 
     /**
      * Get dateQd
      *
-     * @return string 
+     * @return string
      */
     public function getDateQd()
     {

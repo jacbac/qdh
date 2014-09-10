@@ -49,11 +49,10 @@ class JourBataille
      */
     private $photos;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -63,20 +62,20 @@ class JourBataille
     /**
      * Set datedeb
      *
-     * @param \DateTime $datedeb
+     * @param  \DateTime    $datedeb
      * @return JourBataille
      */
     public function setDatedeb($datedeb)
     {
         $this->datedeb = $datedeb;
-    
+
         return $this;
     }
 
     /**
      * Get datedeb
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatedeb()
     {
@@ -86,20 +85,20 @@ class JourBataille
     /**
      * Set datefin
      *
-     * @param \DateTime $datefin
+     * @param  \DateTime    $datefin
      * @return JourBataille
      */
     public function setDatefin($datefin)
     {
         $this->datefin = $datefin;
-    
+
         return $this;
     }
 
     /**
      * Get datefin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatefin()
     {
@@ -109,20 +108,20 @@ class JourBataille
     /**
      * Set descr
      *
-     * @param string $descr
+     * @param  string       $descr
      * @return JourBataille
      */
     public function setDescr($descr)
     {
         $this->descr = $descr;
-    
+
         return $this;
     }
 
     /**
      * Get descr
      *
-     * @return string 
+     * @return string
      */
     public function getDescr()
     {
@@ -132,20 +131,20 @@ class JourBataille
     /**
      * Set photos
      *
-     * @param string $photos
+     * @param  string       $photos
      * @return JourBataille
      */
     public function setPhotos($photos)
     {
         $this->photos = $photos;
-    
+
         return $this;
     }
 
     /**
      * Get photos
      *
-     * @return string 
+     * @return string
      */
     public function getPhotos()
     {

@@ -56,11 +56,10 @@ class Source
      */
     private $logo;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -70,20 +69,20 @@ class Source
     /**
      * Set auteur
      *
-     * @param string $auteur
+     * @param  string $auteur
      * @return Source
      */
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
-    
+
         return $this;
     }
 
     /**
      * Get auteur
      *
-     * @return string 
+     * @return string
      */
     public function getAuteur()
     {
@@ -93,20 +92,20 @@ class Source
     /**
      * Set titre
      *
-     * @param string $titre
+     * @param  string $titre
      * @return Source
      */
     public function setTitre($titre)
     {
         $this->titre = $titre;
-    
+
         return $this;
     }
 
     /**
      * Get titre
      *
-     * @return string 
+     * @return string
      */
     public function getTitre()
     {
@@ -116,20 +115,20 @@ class Source
     /**
      * Set url
      *
-     * @param string $url
+     * @param  string $url
      * @return Source
      */
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -139,20 +138,20 @@ class Source
     /**
      * Set remerciement
      *
-     * @param string $remerciement
+     * @param  string $remerciement
      * @return Source
      */
     public function setRemerciement($remerciement)
     {
         $this->remerciement = $remerciement;
-    
+
         return $this;
     }
 
     /**
      * Get remerciement
      *
-     * @return string 
+     * @return string
      */
     public function getRemerciement()
     {
@@ -162,20 +161,20 @@ class Source
     /**
      * Set logo
      *
-     * @param string $logo
+     * @param  string $logo
      * @return Source
      */
     public function setLogo($logo)
     {
         $this->logo = $logo;
-    
+
         return $this;
     }
 
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {

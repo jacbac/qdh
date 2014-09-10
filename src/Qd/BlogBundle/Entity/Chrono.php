@@ -76,7 +76,6 @@ class Chrono
      * @ORM\ManyToOne(targetEntity="Source")
      * @ORM\JoinColumn(nullable=true)
      */
-// @ORM\Column(name="source", type="integer", nullable=false)
     private $source;
 
     /**
@@ -86,7 +85,6 @@ class Chrono
      * @ORM\ManyToOne(targetEntity="Tags")
      * @ORM\JoinColumn(nullable=true)
      */
-    // @ORM\Column(name="tags", type="integer", nullable=false)
     private $tags;
 
     /**
@@ -103,11 +101,10 @@ class Chrono
      */
     private $changedOn;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -117,13 +114,13 @@ class Chrono
     /**
      * Set datedebut
      *
-     * @param string $datedebut
+     * @param  string $datedebut
      * @return Chrono
      */
     public function setDatedebut($datedebut)
     {
         $this->datedebut = $datedebut;
-    
+
         return $this;
     }
 
@@ -140,13 +137,13 @@ class Chrono
     /**
      * Set datefin
      *
-     * @param string $datefin
+     * @param  string $datefin
      * @return Chrono
      */
     public function setDatefin($datefin)
     {
         $this->datefin = $datefin;
-    
+
         return $this;
     }
 
@@ -163,20 +160,20 @@ class Chrono
     /**
      * Set mois
      *
-     * @param string $mois
+     * @param  string $mois
      * @return Chrono
      */
     public function setMois($mois)
     {
         $this->mois = $mois;
-    
+
         return $this;
     }
 
     /**
      * Get mois
      *
-     * @return string 
+     * @return string
      */
     public function getMois()
     {
@@ -186,20 +183,20 @@ class Chrono
     /**
      * Set annee
      *
-     * @param integer $annee
+     * @param  integer $annee
      * @return Chrono
      */
     public function setAnnee($annee)
     {
         $this->annee = $annee;
-    
+
         return $this;
     }
 
     /**
      * Get annee
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnnee()
     {
@@ -209,20 +206,20 @@ class Chrono
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string $description
      * @return Chrono
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -237,7 +234,7 @@ class Chrono
     public function setSource(\Qd\BlogBundle\Entity\Source $source)
     {
         $this->source = $source;
-    
+
         //return $this;
     }
 
@@ -250,7 +247,6 @@ class Chrono
     {
         return $this->source;
     }
-
 
     /**
      * Set tags
@@ -273,21 +269,21 @@ class Chrono
     }
 
     /**
-    / * Get table
-    /  *
-    / * @return integer
-    */
+     * Get table
+     *
+     * @return integer
+     */
     public function getTable()
     {
         return $this->table;
     }
 
     /**
-    /* Set table
-    /*
-    /* @param integer $table
-    /* @return Chrono
-    */
+     * Set table
+     *
+     * @param  integer $table
+     * @return Chrono
+     */
     public function setTable($table)
     {
         $this->table = $table;
@@ -296,21 +292,21 @@ class Chrono
     }
 
     /**
-    / * Get idtable
-    /  *
-    / * @return integer
-    */
+     * Get idtable
+     *
+     * @return integer
+     */
     public function getIdtable()
     {
         return $this->idtable;
     }
 
     /**
-    /* Set idtable
-    /*
-    /* @param integer $idtable
-    /* @return Chrono
-    */
+     * Set idtable
+     *
+     * @param  integer $idtable
+     * @return Chrono
+     */
     public function setIdtable($idtable)
     {
         $this->idtable = $idtable;
@@ -321,7 +317,7 @@ class Chrono
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param  \DateTime $createdOn
      * @return Chrono
      */
     public function setCreatedOn($createdOn)
@@ -344,7 +340,7 @@ class Chrono
     /**
      * Set changedOn
      *
-     * @param \DateTime $changedOn
+     * @param  \DateTime $changedOn
      * @return Chrono
      */
     public function setChangedOn($changedOn)
@@ -363,9 +359,4 @@ class Chrono
     {
         return $this->changedOn;
     }
-/*
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }*/
 }
