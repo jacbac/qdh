@@ -35,12 +35,12 @@
         </div>
     </div>
 
-    <div class="container-fluid" role="main">
-        {% block content %}{% endblock %}
+    <div class="container" role="main">
+        {% block body %}{% endblock %}
     </div>
 
     <footer>
-        <p><a href="{{ path('qd_blog_mentions') }}">Mentions légales</a>  <a href="#">Crédits</a>  <a href="{{ path('qd_blog_contact') }}">Contact</a></p>
+        <p><a href="{{ path('qd_blog_mentions') }}">Mentions légales</a> | <a href="#">Crédits</a> | <a href="{{ path('qd_blog_contact') }}">Contact</a></p>
     </footer>
 
     {% block javascripts %}

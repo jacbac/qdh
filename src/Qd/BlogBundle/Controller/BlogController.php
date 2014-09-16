@@ -24,127 +24,6 @@ class BlogController extends Controller
         return $this->render('QdBlogBundle:Blog:index.html.twig', array('date' => $date));
     }
 
-    private function donneDate()
-    {
-        // on prend la date du jour
-        $today = new \DateTime('today');
-        // on enlève 100 ans et on adapte le format
-        $today->sub(new \DateInterval('P100Y'));
-
-        // on verifie et oncorrrige si nécessaire la date
-        $date = $this->verifDate($today);
-        $madate = $date->format('Y-m-d');
-
-        // on met la date en variable de session
-        $session = $this->getRequest()->getSession();
-        $session->set('date', $date);
-        $session->set('madate', $madate);
-
-        return $date;
-    }
-
-    private function donneJournaux($madate)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $repo = $em->getRepository('QdBlogBundle:Articles');
-        $journaux = $repo->findByDateparution($madate);
-
-        return $journaux;
-
-    }
-
-    private function donneChrono($madate)
-    {
-        $chronos =  $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Chrono')
-            ->myFindByChrono($madate);
-
-        return $chronos;
-    }
-    private function donneEvenements($madate)
-    {
-        $evenements =  $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Chrono')
-            ->myFindByEvents($madate);
-
-        return $evenements;
-    }
-
-    private function donnePhotos()
-    {
-        $photos['pays'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctPays();
-        $photos['region'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctRegion();
-        $photos['dpt'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctDpt();
-        $photos['com'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctCom();
-        $photos['autp'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctAutp();
-        $photos['autoeu'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctAutoeu();
-        $photos['serie'] = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Opendata')
-            ->myDistinctSerie();
-
-        return $photos;
-    }
-
-    private function donneDatas($madate)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('QdBlogBundle:Opendata');
-        $datas = $repo->findBy(array('datepv' =>$madate), array('datepv' =>'desc'), 3, 0);
-
-        return $datas;
-    }
-
-    private function donneListeschronos()
-    {
-        $listesChronos =  $this->getDoctrine()
-            ->getManager()
-            ->getRepository('QdBlogBundle:Chrono')
-            ->myFindByAll();
-
-        return $listesChronos;
-    }
-    private function donneTags()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('QdBlogBundle:Tags');
-        $tags = $repo->findAll();
-
-        return $tags;
-    }
-
-    private function verifDate($date)
-    {
-        if ($date->format('Y-m-d') < '1914-08-01') {
-            $date = new \DateTime('1914-08-01');
-        } elseif ($date->format('Y-m-d') > '1918-11-11') {
-            $date = new \DateTime('1918-11-11');
-        }
-
-        return $date;
-    }
-
     public function dateAction()
     {
         $date = $this->getRequest()->getSession()->get('date');
@@ -210,27 +89,38 @@ class BlogController extends Controller
             $date = $this->donneDate();
         }
 
-        $date = $this->getRequest()->getSession()->get('date');
+        $date   = $this->getRequest()->getSession()->get('date');
         $madate = $this->getRequest()->getSession()->get('madate');
 
         $liste = array(
-            array('id' => 4, 'title' => $date,                   'url' => 'qd_blog_blog'),
-            array('id' => 5, 'title' => 'Listes Chronologiques', 'url' => 'qd_blog_lstchrono'),
-            array('id' => 6, 'title' => 'Photos',                'url' => 'qd_blog_photos'),
+            array('id' => 4, 'title' => $date,          'url' => 'qd_blog_blog'),
+            array('id' => 5, 'title' => 'Chronologies', 'url' => 'qd_blog_lstchrono'),
+            array('id' => 6, 'title' => 'Photos',       'url' => 'qd_blog_photos'),
         );
 
-        return $this->render('QdBlogBundle:Blog:menu.html.twig', array('liste_menu' => $liste));
+        return $this->render('QdBlogBundle:Blog:menu.html.twig', array(
+            'liste_menu' => $liste
+        ));
     }
 
+    /**
+     * Chronologies générales des évènements
+     *
+     * @return [type] [description]
+     */
     public function lstchronoAction()
     {
         if (!$date = $this->getRequest()->getSession()->get('date')) {
             $date = $this->donneDate();
         }
-        $listesChronos = $this->donneListeschronos();
+
+        $listesChronos = $this->donneListesChronos();
         $tags = $this->donneTags();
 
-        return $this->render('QdBlogBundle:Blog:lstchrono.html.twig', array('chronos' => $listesChronos, 'tags' => $tags));
+        return $this->render('QdBlogBundle:Blog:lstchrono.html.twig', array(
+            'chronos' => $listesChronos,
+            'tags'    => $tags,
+        ));
 
     }
 
@@ -243,13 +133,12 @@ class BlogController extends Controller
 
         $photos = $this->donnePhotos();
         if ($cate = $this->getRequest()->get('cat') && $req = $this->getRequest()->get('req')) {
-
-            $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('QdBlogBundle:Opendata');
-            $result =  $repo->myFindByReq($cate, $req);
+            $result = $this->getDoctrine()->getManager()
+                ->getRepository('QdBlogBundle:Opendata')
+                ->myFindByReq($cate, $req);
         } else {
-            $cate = '';
-            $req = '';
+            $cate   = '';
+            $req    = '';
             $result = '';
         }
 
@@ -289,32 +178,6 @@ class BlogController extends Controller
         $bataille = $repo->findById($id);
         //$datenais = $this->verifOldDate($soldat[0]->getDatenais());
         return $this->render('QdBlogBundle:Blog:bataille.html.twig', array('bataille' => $bataille));
-    }
-
-    private function verifOldDate($date)
-    {
-        $sd = new \DateTime($date);
-        $datenais = null;
-        if ($sd->format("Y-m-d") <= ("1901-11-31")) {
-            $tabMonth = array(
-                '01' => 'Janv',
-                '02' => 'Fév',
-                '03' => 'Mars',
-                '04' => 'Avril',
-                '05' => 'Mai',
-                '06' => 'Juin',
-                '07' => 'Juil',
-                '08' => 'Août',
-                '09' => 'Sept',
-                '10' => 'Oct',
-                '11' => 'Nov',
-                '12' => 'Déc'
-            );
-            $month = $tabMonth[$sd->format("m")];
-            $datenais = $sd->format("d").' '.$month. ' '.$sd->format("Y");
-        }
-
-        return $datenais;
     }
 
     public function ajouterAction()
@@ -378,5 +241,133 @@ Le mal n\'est pas là ; il est surtout dans le temps qui est affreux ; depuis 3 
         return $this->render('QdBlogBundle:Blog:contact.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    private function verifOldDate($date)
+    {
+        $sd = new \DateTime($date);
+        $datenais = null;
+
+        if ($sd->format("Y-m-d") <= ("1901-11-31")) {
+            $tabMonth = array(
+                '01' => 'Janv',
+                '02' => 'Fév',
+                '03' => 'Mars',
+                '04' => 'Avril',
+                '05' => 'Mai',
+                '06' => 'Juin',
+                '07' => 'Juil',
+                '08' => 'Août',
+                '09' => 'Sept',
+                '10' => 'Oct',
+                '11' => 'Nov',
+                '12' => 'Déc'
+            );
+            $month = $tabMonth[$sd->format("m")];
+            $datenais = $sd->format("d").' '.$month. ' '.$sd->format("Y");
+        }
+
+        return $datenais;
+    }
+
+    private function donneDate()
+    {
+        // on prend la date du jour
+        $today = new \DateTime('today');
+        // on enlève 100 ans et on adapte le format
+        $today->sub(new \DateInterval('P100Y'));
+
+        // on verifie et oncorrrige si nécessaire la date
+        $date = $this->verifDate($today);
+        $madate = $date->format('Y-m-d');
+
+        // on met la date en variable de session
+        $session = $this->getRequest()->getSession();
+        $session->set('date', $date);
+        $session->set('madate', $madate);
+
+        return $date;
+    }
+
+    private function donneJournaux($madate)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repo = $em->getRepository('QdBlogBundle:Articles');
+        $journaux = $repo->findByDateparution($madate);
+
+        return $journaux;
+    }
+
+    private function donneChrono($madate)
+    {
+        $chronos =  $this->getDoctrine()
+            ->getManager()
+            ->getRepository('QdBlogBundle:Chrono')
+            ->myFindByChrono($madate);
+
+        return $chronos;
+    }
+
+    private function donneEvenements($madate)
+    {
+        $evenements =  $this->getDoctrine()
+            ->getManager()
+            ->getRepository('QdBlogBundle:Chrono')
+            ->myFindByEvents($madate);
+
+        return $evenements;
+    }
+
+    /**
+     * Retourne un tableau de photos par thématique
+     *
+     * @return array [description]
+     */
+    private function donnePhotos()
+    {
+        $openDataRepo = $this->getDoctrine()->getManager()->getRepository('QdBlogBundle:Opendata');
+
+        return array(
+            'pays'   => $openDataRepo->myDistinctPays(),
+            'region' => $openDataRepo->myDistinctRegion(),
+            'dpt'    => $openDataRepo->myDistinctDpt(),
+            'com'    => $openDataRepo->myDistinctCom(),
+            'autp'   => $openDataRepo->myDistinctAutp(),
+            'autoeu' => $openDataRepo->myDistinctAutoeu(),
+            'serie'  => $openDataRepo->myDistinctSerie(),
+        );
+    }
+
+    private function donneDatas($madate)
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository('QdBlogBundle:Opendata')
+            ->findBy(array('datepv' => $madate), array('datepv' =>'desc'), 3, 0);
+    }
+
+    private function donneListesChronos()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository('QdBlogBundle:Chrono')
+            ->myFindByAll();
+    }
+
+    private function donneTags()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository('QdBlogBundle:Tags')
+            ->findAll();
+    }
+
+    private function verifDate($date)
+    {
+        if ($date->format('Y-m-d') < '1914-08-01') {
+            $date = new \DateTime('1914-08-01');
+        } elseif ($date->format('Y-m-d') > '1918-11-11') {
+            $date = new \DateTime('1918-11-11');
+        }
+
+        return $date;
     }
 }

@@ -1,158 +1,162 @@
 {# src/Qd/BlogBundle/Resources/views/Blog/date.html.twig #}
 
+{% block header %}
+    <h1>Un jour en 14</h1>
+    <p>Récit de la guerre 14-18 au jour le jour</p>
+{% endblock %}
 
-<div class="date">
-    <h4><span class="hidden-xs">La Première Guerre Modiale, jour après jour. <br /></span>Aujourd'hui, l'actualité du</h4>
+{% block content %}
+    <div class="container page page-home">
+        <div class="date">
+            <h4>Aujourd'hui, l'actualité du</h4>
 
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="datejour">
-            {% if madate|date('Y-m-d') == '1914-08-01' %}
-                <span class="hidden-xs">
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
-                </span>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="datejour">
+                    {% if madate|date('Y-m-d') == '1914-08-01' %}
+                        <span class="hidden-xs">
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
+                        </span>
 
-                <span class="visible-xs">
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
-                </span>
+                        <span class="visible-xs">
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
+                        </span>
 
-            {% elseif madate|date('Y-m') < '1914-09' %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
-                </span>
+                    {% elseif madate|date('Y-m') < '1914-09' %}
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
+                        </span>
 
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
-                </span>
-            {% elseif madate|date('Y') == '1914' %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span><span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
-                </span>
-
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
-                </span>
-            {% elseif madate|date('Y-m-d') == '1918-11-11' %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                </span>
-
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                </span>
-            {% elseif madate|date('Y-m-d') > '1918-10-11'  %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                </span>
-
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                </span>
-            {% elseif madate|date('Y') == '1918' %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
-                </span>
-
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
-                </span>
-            {% else %}
-                <span class="hidden-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
-                    {{ madate|localizeddate('full', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
-                </span>
-
-                <span class="visible-xs">
-                    <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
-                    {{ madate|localizeddate('medium', 'none') }}
-                    <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
-                    <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
-                </span>
-            {% endif %}
-            </h2>
-        </div>
-
-    </div>
-    <div class="row annee">
-            <div class="col-md-2 col-xs-1"> <!--style="background-color: #ffff00"--></div>
-            <div class="col-md-4 col-xs-5"><h4 class="left">
-                {% if madate|date('Y') == '1915' %}
-                    <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
-                    <!--<input type="submit" name="prevyear" alt="revenir à l'année 1914" value="1914" />-->
-                {% elseif madate|date('Y') == '1916' %}
-                    <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
-                 {% elseif madate|date('Y') == '1917' %}
-                    <a href="{{ path('qd_blog_blog', {'action': "prev3year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1916" > <span class="hidden-xs">19</span>16</a>
-                 {% elseif madate|date('Y') == '1918' %}
-                    <a href="{{ path('qd_blog_blog', {'action': "prev4year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prev3year"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1916" > <span class="hidden-xs">19</span>16</a>
-                    <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1917" > <span class="hidden-xs">19</span>17</a>
-                {% endif %}</h4>
-            </div>
-            <div class="col-md-4 col-xs-5"><h4 class="right">
-                    {% if madate|date('Y') == '1917' %}
-                        <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
-                    {% elseif madate|date('Y') == '1916' %}
-                        <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
-                    {% elseif madate|date('Y') == '1915' %}
-                        <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1916" > <span class="hidden-xs">19</span>16</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next3year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
+                        </span>
                     {% elseif madate|date('Y') == '1914' %}
-                        <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1915" > <span class="hidden-xs">19</span>15</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1916" > <span class="hidden-xs">19</span>16</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next3year"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
-                        <a href="{{ path('qd_blog_blog', {'action': "next4year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
-                    {% endif %}</h4>
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span><span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
+                        </span>
+
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
+                        </span>
+                    {% elseif madate|date('Y-m-d') == '1918-11-11' %}
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                        </span>
+
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                        </span>
+                    {% elseif madate|date('Y-m-d') > '1918-10-11'  %}
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                        </span>
+
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                        </span>
+                    {% elseif madate|date('Y') == '1918' %}
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
+                        </span>
+
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
+                        </span>
+                    {% else %}
+                        <span class="hidden-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span><<-</span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span><-</span></a>
+                            {{ madate|localizeddate('full', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span>-></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span>->></span></a>
+                        </span>
+
+                        <span class="visible-xs">
+                            <a href="{{ path('qd_blog_blog', {'action': "prevmonth"}) }}" class="arrow" title="revenir un mois en arrière" > <span class="glyphicon glyphicon-fast-backward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevday"}) }}" class="arrow" title="revenir un jour en arrière"> <span class="glyphicon glyphicon-backward "></span></a>
+                            {{ madate|localizeddate('medium', 'none') }}
+                            <a href="{{ path('qd_blog_blog', {'action': "nextday"}) }}" class="arrow" title="avancer d'un jour" > <span class="glyphicon glyphicon-forward "></span></a>
+                            <a href="{{ path('qd_blog_blog', {'action': "nextmonth"}) }}" class="arrow" title="avancer d'un mois" > <span class="glyphicon glyphicon-fast-forward "></span></a>
+                        </span>
+                    {% endif %}
+                    </h2>
+                </div>
             </div>
-            <div class="col-md-2 col-xs-1"> <!--style="background-color: #ffff00"--></div>
+
+            <div class="row annee">
+                    <div class="col-md-2 col-xs-1"></div>
+                    <div class="col-md-4 col-xs-5"><h4 class="left">
+                        {% if madate|date('Y') == '1915' %}
+                            <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
+                        {% elseif madate|date('Y') == '1916' %}
+                            <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
+                         {% elseif madate|date('Y') == '1917' %}
+                            <a href="{{ path('qd_blog_blog', {'action': "prev3year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1916" > <span class="hidden-xs">19</span>16</a>
+                         {% elseif madate|date('Y') == '1918' %}
+                            <a href="{{ path('qd_blog_blog', {'action': "prev4year"}) }}" title="revenir à l'année 1914" > <span class="hidden-xs">19</span>14</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prev3year"}) }}" title="revenir à l'année 1915" > <span class="hidden-xs">19</span>15</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prev2year"}) }}" title="revenir à l'année 1916" > <span class="hidden-xs">19</span>16</a>
+                            <a href="{{ path('qd_blog_blog', {'action': "prevyear"}) }}" title="revenir à l'année 1917" > <span class="hidden-xs">19</span>17</a>
+                        {% endif %}</h4>
+                    </div>
+                    <div class="col-md-4 col-xs-5"><h4 class="right">
+                            {% if madate|date('Y') == '1917' %}
+                                <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
+                            {% elseif madate|date('Y') == '1916' %}
+                                <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
+                            {% elseif madate|date('Y') == '1915' %}
+                                <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1916" > <span class="hidden-xs">19</span>16</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next3year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
+                            {% elseif madate|date('Y') == '1914' %}
+                                <a href="{{ path('qd_blog_blog', {'action': "nextyear"}) }}" title="avancer à l'année 1915" > <span class="hidden-xs">19</span>15</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next2year"}) }}" title="avancer à l'année 1916" > <span class="hidden-xs">19</span>16</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next3year"}) }}" title="avancer à l'année 1917" > <span class="hidden-xs">19</span>17</a>
+                                <a href="{{ path('qd_blog_blog', {'action': "next4year"}) }}" title="avancer à l'année 1918" > <span class="hidden-xs">19</span>18</a>
+                            {% endif %}</h4>
+                    </div>
+                    <div class="col-md-2 col-xs-1"></div>
+            </div>
         </div>
-</div>
-
-
-
+    </div>
+{% endblock %}

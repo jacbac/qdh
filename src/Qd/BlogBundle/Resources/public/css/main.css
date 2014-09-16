@@ -93,6 +93,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px 0;
 }
 
+.page-title {
+    padding: 40px;
+    font-family: 'fzmOldTypewriter', sans-serif;
+    text-align: center;
+    color: #333;
+}
+
 #donnees,
 #side {
     padding-left: 5px;
@@ -107,10 +114,49 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-.contenu {
-    padding: 5px;
-    border-radius: 3px;
-    background-color: #f2ede0;
+/* Chronologie -------------------------------------------------------------- */
+
+.tag-general {
+    display: block;
+}
+
+.tag {
+    display: inline-block;
+}
+
+table th {
+    text-align: center;
+    height: 40px;
+}
+
+.chrono-title-date {
+    width: 100px;
+}
+
+.chrono-title-type {
+    width: 120px;
+}
+
+.chrono-title-about {
+    width: 80px;
+}
+
+.chrono-date {
+    padding: 8px;
+    text-align: center;
+}
+
+.chrono-type {
+    padding: 8px;
+    text-align: center;
+}
+
+.chrono-desc {
+    padding: 8px;
+}
+
+.chrono-about {
+    padding: 8px;
 }
 
 #journaux img {
@@ -154,19 +200,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #donnees .panel-body {
-}
-
-.panel,
-.panel-body {
-    border: none;
-    box-shadow: none;
-    background-color: #f2ede0;
-}
-
-.chronos,
-.chronos .panel-body {
-    padding-left : 15px;
-    padding-right : 15px
 }
 
 /* Aside -------------------------------------------------------------------- */

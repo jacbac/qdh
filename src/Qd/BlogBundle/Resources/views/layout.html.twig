@@ -7,10 +7,14 @@
 {%  endblock %}
 
 {% block header %}
-
+    <h1>Un jour en 14</h1>
+    <p>Récits de la guerre 14-18 au jour le jour</p>
 {% endblock %}
 
 {% block body %}
-    <h1>Le Blog 14-18</h1>
-    {%  block qdblog_body %} {% endblock %}
+    <div class="page-title">
+        {% block pageTitle %}{% endblock %}
+    </div>
+    {% block side %}{% endblock %}
+    {% block content %}{% endblock %}
 {% endblock %}
